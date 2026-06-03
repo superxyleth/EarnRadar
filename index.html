@@ -3,64 +3,138 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>理财活动记录</title>
+    <title>EarnRadar 活动雷达</title>
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
     <header class="topbar">
-      <div class="brand">
-        <div class="brand-mark" aria-hidden="true">¥</div>
-        <div>
-          <h1>理财活动记录</h1>
-          <p>简洁记录：活动时间、金额、稳定币、教程入口</p>
+      <div class="topbar-inner">
+        <div class="brand">
+          <img class="brand-mark" src="./superxyleth-avatar.jpg" alt="superxyleth 头像" />
+          <div>
+            <h1>EarnRadar 活动雷达</h1>
+            <p>追踪 Binance / OKX 的理财、Alpha 与交易任务</p>
+          </div>
         </div>
+        <a class="author-link" href="https://x.com/superxyleth" target="_blank" rel="noreferrer">作者 X：@superxyleth</a>
       </div>
-      <a class="button secondary" href="https://www.binance.com/zh-CN/earn" target="_blank" rel="noreferrer">Binance Earn</a>
     </header>
 
-    <main class="page">
-      <section class="overview">
-        <div>
-          <h2>当前理财活动</h2>
-          <p>只展示可执行的关键信息，详细条款以官方公告为准。</p>
-        </div>
-      </section>
+    <main class="app-shell">
+      <aside class="sidebar" aria-label="导航">
+        <section class="nav-group">
+          <div class="nav-title">交易所</div>
+          <div id="exchangeTabs" class="nav-list">
+            <button class="nav-item active" type="button" data-platform="all">
+              <span>全部活动</span>
+              <strong id="allCount">0</strong>
+            </button>
+            <button class="nav-item" type="button" data-platform="Binance">
+              <span>Binance</span>
+              <strong id="binanceCount">0</strong>
+            </button>
+            <button class="nav-item" type="button" data-platform="OKX">
+              <span>OKX</span>
+              <strong id="okxCount">0</strong>
+            </button>
+          </div>
+        </section>
 
-      <section class="summary" aria-label="概览">
-        <div class="summary-item">
-          <span>已录入活动</span>
-          <strong id="activityCount">0</strong>
-        </div>
-        <div class="summary-item">
-          <span>平台数量</span>
-          <strong id="platformCount">0</strong>
-        </div>
-        <div class="summary-item">
-          <span>进行中</span>
-          <strong id="activeCount">0</strong>
-        </div>
-      </section>
+        <section id="moduleTabs" class="nav-group hidden" aria-label="Binance 模块">
+          <div class="nav-title">Binance 模块</div>
+          <div class="nav-list">
+            <button class="nav-item active" type="button" data-module="finance">
+              <span>理财模块</span>
+              <strong id="financeCount">0</strong>
+            </button>
+            <button class="nav-item" type="button" data-module="alpha">
+              <span>Alpha 模块</span>
+              <strong id="alphaCount">0</strong>
+            </button>
+            <button class="nav-item" type="button" data-module="small">
+              <span>撸毛小活动模块</span>
+              <strong id="smallCount">0</strong>
+            </button>
+          </div>
+        </section>
 
-      <section class="toolbar" aria-label="筛选">
-        <input id="searchInput" type="search" placeholder="搜索平台、币种、活动名称" />
-        <select id="platformFilter">
-          <option value="all">全部平台</option>
-        </select>
-      </section>
+        <section id="okxModuleTabs" class="nav-group hidden" aria-label="OKX 模块">
+          <div class="nav-title">OKX 模块</div>
+          <div class="nav-list">
+            <button class="nav-item active" type="button" data-module="boost">
+              <span>Boost 活动</span>
+              <strong id="boostCount">0</strong>
+            </button>
+          </div>
+        </section>
+      </aside>
 
-      <section id="activityList" class="activity-list" aria-label="理财活动列表"></section>
+      <section class="content">
+        <div class="content-head">
+          <div>
+            <h2 id="viewTitle">全部活动</h2>
+            <p id="viewMeta">按开始时间倒序排列，优先展示可执行信息。</p>
+          </div>
+          <input id="searchInput" type="search" placeholder="搜索平台、币种、活动名称" />
+        </div>
+
+        <section class="summary" aria-label="概览">
+          <div class="summary-item">
+            <span>当前列表</span>
+            <strong id="resultCount">0</strong>
+          </div>
+          <div class="summary-item">
+            <span>已录入活动</span>
+            <strong id="activityCount">0</strong>
+          </div>
+          <div class="summary-item">
+            <span>进行中</span>
+            <strong id="activeCount">0</strong>
+          </div>
+        </section>
+
+        <section id="activityList" class="activity-list" aria-label="活动列表"></section>
+      </section>
     </main>
 
     <script src="./data.js"></script>
     <script>
       const listEl = document.getElementById("activityList");
       const searchEl = document.getElementById("searchInput");
-      const platformEl = document.getElementById("platformFilter");
+      const exchangeTabsEl = document.getElementById("exchangeTabs");
+      const moduleTabsEl = document.getElementById("moduleTabs");
+      const okxModuleTabsEl = document.getElementById("okxModuleTabs");
       const activityCountEl = document.getElementById("activityCount");
-      const platformCountEl = document.getElementById("platformCount");
+      const resultCountEl = document.getElementById("resultCount");
       const activeCountEl = document.getElementById("activeCount");
+      const viewTitleEl = document.getElementById("viewTitle");
+      const viewMetaEl = document.getElementById("viewMeta");
+      const allCountEl = document.getElementById("allCount");
+      const binanceCountEl = document.getElementById("binanceCount");
+      const okxCountEl = document.getElementById("okxCount");
+      const financeCountEl = document.getElementById("financeCount");
+      const smallCountEl = document.getElementById("smallCount");
+      const alphaCountEl = document.getElementById("alphaCount");
+      const boostCountEl = document.getElementById("boostCount");
 
       const activities = window.financeActivities || [];
+      const defaultModules = {
+        Binance: "finance",
+        OKX: "boost",
+      };
+      const platformNames = {
+        all: "全部活动",
+        Binance: "Binance",
+        OKX: "OKX",
+      };
+      const moduleNames = {
+        finance: "理财模块",
+        alpha: "Alpha 模块",
+        small: "撸毛小活动模块",
+        boost: "Boost 活动",
+      };
+      let selectedPlatform = "all";
+      let selectedModule = "finance";
 
       function escapeHtml(value) {
         return String(value)
@@ -71,31 +145,53 @@
           .replaceAll("'", "&#039;");
       }
 
-      function setupFilters() {
-        const platforms = [...new Set(activities.map((item) => item.platform))].sort();
-        platformEl.insertAdjacentHTML(
-          "beforeend",
-          platforms.map((platform) => `<option value="${escapeHtml(platform)}">${escapeHtml(platform)}</option>`).join(""),
-        );
-      }
-
       function filteredActivities() {
         const query = searchEl.value.trim().toLowerCase();
-        const platform = platformEl.value;
-        return activities.filter((item) => {
-          const text = `${item.platform} ${item.title} ${item.stablecoin} ${item.productType}`.toLowerCase();
-          return (platform === "all" || item.platform === platform) && (!query || text.includes(query));
-        });
+        return activities
+          .filter((item) => {
+            const text = `${item.platform} ${item.title} ${item.stablecoin} ${item.productType}`.toLowerCase();
+            const matchesPlatform = selectedPlatform === "all" || item.platform === selectedPlatform;
+            const matchesModule = !defaultModules[selectedPlatform] || moduleOf(item) === selectedModule;
+            return matchesPlatform && matchesModule && (!query || text.includes(query));
+          })
+          .sort((a, b) => Date.parse(b.startAt.replace(" ", "T")) - Date.parse(a.startAt.replace(" ", "T")));
+      }
+
+      function moduleOf(item) {
+        if (item.module) return item.module;
+        if (item.platform === "OKX") return "boost";
+        return item.module || "finance";
+      }
+
+      function updateCounts(filtered) {
+        activityCountEl.textContent = activities.length;
+        resultCountEl.textContent = filtered.length;
+        activeCountEl.textContent = activities.filter((item) => item.status === "进行中").length;
+        allCountEl.textContent = activities.length;
+        binanceCountEl.textContent = activities.filter((item) => item.platform === "Binance").length;
+        okxCountEl.textContent = activities.filter((item) => item.platform === "OKX").length;
+        financeCountEl.textContent = activities.filter((item) => item.platform === "Binance" && moduleOf(item) === "finance").length;
+        smallCountEl.textContent = activities.filter((item) => item.platform === "Binance" && moduleOf(item) === "small").length;
+        alphaCountEl.textContent = activities.filter((item) => item.platform === "Binance" && moduleOf(item) === "alpha").length;
+        boostCountEl.textContent = activities.filter((item) => item.platform === "OKX" && moduleOf(item) === "boost").length;
+      }
+
+      function updateViewLabel(filtered) {
+        const platformLabel = platformNames[selectedPlatform] || selectedPlatform;
+        const moduleLabel = defaultModules[selectedPlatform] ? moduleNames[selectedModule] : "";
+        viewTitleEl.textContent = moduleLabel ? `${platformLabel} / ${moduleLabel}` : platformLabel;
+        viewMetaEl.textContent = `${filtered.length} 条活动，按开始时间倒序排列`;
       }
 
       function render() {
         const filtered = filteredActivities();
-        activityCountEl.textContent = activities.length;
-        platformCountEl.textContent = new Set(activities.map((item) => item.platform)).size;
-        activeCountEl.textContent = activities.filter((item) => item.status === "进行中").length;
+        moduleTabsEl.classList.toggle("hidden", selectedPlatform !== "Binance");
+        okxModuleTabsEl.classList.toggle("hidden", selectedPlatform !== "OKX");
+        updateCounts(filtered);
+        updateViewLabel(filtered);
 
         if (!filtered.length) {
-          listEl.innerHTML = `<div class="empty-state">没有匹配的理财活动。</div>`;
+          listEl.innerHTML = `<div class="empty-state">当前模块暂无活动。</div>`;
           return;
         }
 
@@ -103,78 +199,97 @@
           .map(
             (item) => `
               <article class="activity-card">
-                <div class="card-head">
-                  <div>
-                    <div class="eyebrow">${escapeHtml(item.platform)} Earn</div>
-                    <h2>${escapeHtml(item.title)}</h2>
-                    <div class="badges">
-                      <span class="badge green">${escapeHtml(item.stablecoin)}</span>
-                      <span class="badge">${escapeHtml(item.productType)}</span>
-                      <span class="badge">${escapeHtml(item.status)}</span>
-                      <span class="badge">${escapeHtml(item.timezone)}</span>
+                <div class="activity-main">
+                  <div class="activity-head">
+                    <div class="activity-heading">
+                      <div class="tag-row">
+                        <span class="platform-pill">${escapeHtml(item.platform)}</span>
+                        <span class="module-pill">${escapeHtml(moduleNames[moduleOf(item)] || item.productType)}</span>
+                        <span class="type-pill">${escapeHtml(item.productType)}</span>
+                      </div>
+                      <h3>${escapeHtml(item.title)}</h3>
+                    </div>
+                    <span class="status-pill">${escapeHtml(item.status)}</span>
+                  </div>
+
+                  <div class="signal-grid">
+                    <div class="signal-card prize">
+                      <span>奖励规模</span>
+                      <strong>${escapeHtml(item.apr)}</strong>
+                      <p>${escapeHtml(item.activityAmount)}</p>
+                    </div>
+                    <div class="signal-card">
+                      <span>参与标的</span>
+                      <strong>${escapeHtml(item.stablecoin)}</strong>
+                    </div>
+                    <div class="signal-card">
+                      <span>参与门槛</span>
+                      <strong>${escapeHtml(item.minAmount)}</strong>
+                    </div>
+                    <div class="signal-card time">
+                      <span>活动周期</span>
+                      <strong>${escapeHtml(item.startAt)} 至 ${escapeHtml(item.endAt)}</strong>
+                      <p>${escapeHtml(item.timezone)}</p>
                     </div>
                   </div>
-                  <div class="actions">
-                    <a class="button" href="${escapeHtml(item.tutorialUrl)}" target="_blank" rel="noreferrer">参加活动</a>
+
+                  <div class="activity-actions">
+                    <a class="button" href="${escapeHtml(item.tutorialUrl)}" target="_blank" rel="noreferrer">参与入口</a>
                     <a class="button secondary" href="${escapeHtml(item.officialUrl)}" target="_blank" rel="noreferrer">官方公告</a>
                   </div>
                 </div>
 
-                <div class="metrics">
-                  <div class="metric">
-                    <span>最高年化</span>
-                    <strong>${escapeHtml(item.apr)}</strong>
-                  </div>
-                  <div class="metric">
-                    <span>活动稳定币</span>
-                    <strong>${escapeHtml(item.stablecoin)}</strong>
-                  </div>
-                  <div class="metric">
-                    <span>最低申购</span>
-                    <strong>${escapeHtml(item.minAmount)}</strong>
-                  </div>
-                  <div class="metric">
-                    <span>活动金额</span>
-                    <strong class="small">${escapeHtml(item.activityAmount)}</strong>
-                  </div>
-                </div>
-
-                <div class="details">
-                  <section class="info-panel">
-                    <h3>活动时期</h3>
-                    <div class="timeline">
-                      <div class="time-row">
-                        <span>开始</span>
-                        <strong>${escapeHtml(item.startAt)}（${escapeHtml(item.timezone)}）</strong>
-                      </div>
-                      <div class="time-row">
-                        <span>结束</span>
-                        <strong>${escapeHtml(item.endAt)}（${escapeHtml(item.timezone)}）</strong>
-                      </div>
-                    </div>
-                    <div class="source">
-                      教程链接：<br />
-                      <a href="${escapeHtml(item.tutorialUrl)}" target="_blank" rel="noreferrer">${escapeHtml(item.tutorialUrl)}</a>
-                    </div>
-                  </section>
-
-                  <section class="info-panel">
-                    <h3>规则摘要</h3>
+                <details class="activity-details">
+                  <summary>规则摘要</summary>
+                  <div class="rule-box">
                     <ul>
                       ${item.rewardRule.map((rule) => `<li>${escapeHtml(rule)}</li>`).join("")}
                     </ul>
-                    <div class="source">${escapeHtml(item.sourceNote)} 更新日期：${escapeHtml(item.updatedAt)}</div>
-                  </section>
-                </div>
+                  </div>
+                  <div class="source-row">${escapeHtml(item.sourceNote)} 更新：${escapeHtml(item.updatedAt)}</div>
+                </details>
               </article>
             `,
           )
           .join("");
       }
 
-      setupFilters();
+      exchangeTabsEl.addEventListener("click", (event) => {
+        const tab = event.target.closest(".nav-item");
+        if (!tab) return;
+        selectedPlatform = tab.dataset.platform;
+        if (defaultModules[selectedPlatform]) {
+          selectedModule = defaultModules[selectedPlatform];
+          [moduleTabsEl, okxModuleTabsEl].forEach((group) => {
+            group.querySelectorAll(".nav-item").forEach((item) => {
+              item.classList.toggle("active", item.dataset.module === selectedModule);
+            });
+          });
+        }
+        exchangeTabsEl.querySelectorAll(".nav-item").forEach((item) => {
+          item.classList.toggle("active", item === tab);
+        });
+        render();
+      });
+      moduleTabsEl.addEventListener("click", (event) => {
+        const tab = event.target.closest(".nav-item");
+        if (!tab) return;
+        selectedModule = tab.dataset.module;
+        moduleTabsEl.querySelectorAll(".nav-item").forEach((item) => {
+            item.classList.toggle("active", item.dataset.module === selectedModule);
+        });
+        render();
+      });
+      okxModuleTabsEl.addEventListener("click", (event) => {
+        const tab = event.target.closest(".nav-item");
+        if (!tab) return;
+        selectedModule = tab.dataset.module;
+        okxModuleTabsEl.querySelectorAll(".nav-item").forEach((item) => {
+          item.classList.toggle("active", item === tab);
+        });
+        render();
+      });
       searchEl.addEventListener("input", render);
-      platformEl.addEventListener("change", render);
       render();
     </script>
   </body>
