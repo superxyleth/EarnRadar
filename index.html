@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>理财活动记录</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true">¥</div>
+        <div>
+          <h1>理财活动记录</h1>
+          <p>简洁记录：活动时间、金额、稳定币、教程入口</p>
+        </div>
+      </div>
+      <a class="button secondary" href="https://www.binance.com/zh-CN/earn" target="_blank" rel="noreferrer">Binance Earn</a>
+    </header>
+
+    <main class="page">
+      <section class="overview">
+        <div>
+          <h2>当前理财活动</h2>
+          <p>只展示可执行的关键信息，详细条款以官方公告为准。</p>
+        </div>
+      </section>
+
+      <section class="summary" aria-label="概览">
+        <div class="summary-item">
+          <span>已录入活动</span>
+          <strong id="activityCount">0</strong>
+        </div>
+        <div class="summary-item">
+          <span>平台数量</span>
+          <strong id="platformCount">0</strong>
+        </div>
+        <div class="summary-item">
+          <span>进行中</span>
+          <strong id="activeCount">0</strong>
+        </div>
+      </section>
+
+      <section class="toolbar" aria-label="筛选">
+        <input id="searchInput" type="search" placeholder="搜索平台、币种、活动名称" />
+        <select id="platformFilter">
+          <option value="all">全部平台</option>
+        </select>
+      </section>
+
+      <section id="activityList" class="activity-list" aria-label="理财活动列表"></section>
+    </main>
+
+    <script src="./data.js"></script>
+    <script>
+      const listEl = document.getElementById("activityList");
+      const searchEl = document.getElementById("searchInput");
+      const platformEl = document.getElementById("platformFilter");
+      const activityCountEl = document.getElementById("activityCount");
+      const platformCountEl = document.getElementById("platformCount");
+      const activeCountEl = document.getElementById("activeCount");
+
+      const activities = window.financeActivities || [];
+
+      function escapeHtml(value) {
+        return String(value)
+          .replaceAll("&", "&amp;")
+          .replaceAll("<", "&lt;")
+          .replaceAll(">", "&gt;")
+          .replaceAll('"', "&quot;")
+          .replaceAll("'", "&#039;");
+      }
+
+      function setupFilters() {
+        const platforms = [...new Set(activities.map((item) => item.platform))].sort();
+        platformEl.insertAdjacentHTML(
+          "beforeend",
+          platforms.map((platform) => `<option value="${escapeHtml(platform)}">${escapeHtml(platform)}</option>`).join(""),
+        );
+      }
+
+      function filteredActivities() {
+        const query = searchEl.value.trim().toLowerCase();
+        const platform = platformEl.value;
+        return activities.filter((item) => {
+          const text = `${item.platform} ${item.title} ${item.stablecoin} ${item.productType}`.toLowerCase();
+          return (platform === "all" || item.platform === platform) && (!query || text.includes(query));
+        });
+      }
+
+      function render() {
+        const filtered = filteredActivities();
+        activityCountEl.textContent = activities.length;
+        platformCountEl.textContent = new Set(activities.map((item) => item.platform)).size;
+        activeCountEl.textContent = activities.filter((item) => item.status === "进行中").length;
+
+        if (!filtered.length) {
+          listEl.innerHTML = `<div class="empty-state">没有匹配的理财活动。</div>`;
+          return;
+        }
+
+        listEl.innerHTML = filtered
+          .map(
+            (item) => `
+              <article class="activity-card">
+                <div class="card-head">
+                  <div>
+                    <div class="eyebrow">${escapeHtml(item.platform)} Earn</div>
+                    <h2>${escapeHtml(item.title)}</h2>
+                    <div class="badges">
+                      <span class="badge green">${escapeHtml(item.stablecoin)}</span>
+                      <span class="badge">${escapeHtml(item.productType)}</span>
+                      <span class="badge">${escapeHtml(item.status)}</span>
+                      <span class="badge">${escapeHtml(item.timezone)}</span>
+                    </div>
+                  </div>
+                  <div class="actions">
+                    <a class="button" href="${escapeHtml(item.tutorialUrl)}" target="_blank" rel="noreferrer">参加活动</a>
+                    <a class="button secondary" href="${escapeHtml(item.officialUrl)}" target="_blank" rel="noreferrer">官方公告</a>
+                  </div>
+                </div>
+
+                <div class="metrics">
+                  <div class="metric">
+                    <span>最高年化</span>
+                    <strong>${escapeHtml(item.apr)}</strong>
+                  </div>
+                  <div class="metric">
+                    <span>活动稳定币</span>
+                    <strong>${escapeHtml(item.stablecoin)}</strong>
+                  </div>
+                  <div class="metric">
+                    <span>最低申购</span>
+                    <strong>${escapeHtml(item.minAmount)}</strong>
+                  </div>
+                  <div class="metric">
+                    <span>活动金额</span>
+                    <strong class="small">${escapeHtml(item.activityAmount)}</strong>
+                  </div>
+                </div>
+
+                <div class="details">
+                  <section class="info-panel">
+                    <h3>活动时期</h3>
+                    <div class="timeline">
+                      <div class="time-row">
+                        <span>开始</span>
+                        <strong>${escapeHtml(item.startAt)}（${escapeHtml(item.timezone)}）</strong>
+                      </div>
+                      <div class="time-row">
+                        <span>结束</span>
+                        <strong>${escapeHtml(item.endAt)}（${escapeHtml(item.timezone)}）</strong>
+                      </div>
+                    </div>
+                    <div class="source">
+                      教程链接：<br />
+                      <a href="${escapeHtml(item.tutorialUrl)}" target="_blank" rel="noreferrer">${escapeHtml(item.tutorialUrl)}</a>
+                    </div>
+                  </section>
+
+                  <section class="info-panel">
+                    <h3>规则摘要</h3>
+                    <ul>
+                      ${item.rewardRule.map((rule) => `<li>${escapeHtml(rule)}</li>`).join("")}
+                    </ul>
+                    <div class="source">${escapeHtml(item.sourceNote)} 更新日期：${escapeHtml(item.updatedAt)}</div>
+                  </section>
+                </div>
+              </article>
+            `,
+          )
+          .join("");
+      }
+
+      setupFilters();
+      searchEl.addEventListener("input", render);
+      platformEl.addEventListener("change", render);
+      render();
+    </script>
+  </body>
+</html>

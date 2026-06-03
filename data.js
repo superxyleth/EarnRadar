@@ -1,0 +1,26 @@
+window.financeActivities = [
+  {
+    id: "binance-usdc-flexible-7-apr-202606",
+    platform: "Binance",
+    title: "USDC 活期最高 7% APR",
+    productType: "活期理财",
+    status: "进行中",
+    stablecoin: "USDC",
+    apr: "最高 7%",
+    startAt: "2026-06-01 08:00",
+    endAt: "2026-07-01 07:59:59",
+    timezone: "北京时间",
+    minAmount: "0.01 USDC",
+    activityAmount: "300 USDC 以内享最高 7%；产品最高申购上限 300,000,000 USDC",
+    rewardRule: [
+      "300 USDC 以内：约 2% 实时 APR + 5% 阶梯加成 APR，合计最高 7%。",
+      "超过 300 USDC 的部分：主要享实时 APR，约 2%，以产品页实时显示为准。",
+      "阶梯加成奖励按日发放到现货账户；实时 APR 每分钟累计到 Earn 账户。",
+      "活期产品即时赎回；活动额度按先到先得规则申购。",
+    ],
+    tutorialUrl: "https://app.binance.com/earn/simple-earn?asset=USDC&productId=USDC001&top=1",
+    officialUrl: "https://www.binance.com/zh-CN/support/announcement/detail/a22eb935351242ecae875d8d41ef6bac",
+    sourceNote: "规则来源：Binance 官方公告 a22eb935351242ecae875d8d41ef6bac。",
+    updatedAt: "2026-06-03",
+  },
+];
