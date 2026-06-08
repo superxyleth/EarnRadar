@@ -68,6 +68,10 @@
               <span>闪赚模块</span>
               <strong id="flashCount">0</strong>
             </button>
+            <button class="nav-item" type="button" data-module="onchain">
+              <span>链上赚币</span>
+              <strong id="onchainCount">0</strong>
+            </button>
             <button class="nav-item" type="button" data-module="boost">
               <span>Boost 活动</span>
               <strong id="boostCount">0</strong>
@@ -123,6 +127,7 @@
       const smallCountEl = document.getElementById("smallCount");
       const alphaCountEl = document.getElementById("alphaCount");
       const flashCountEl = document.getElementById("flashCount");
+      const onchainCountEl = document.getElementById("onchainCount");
       const boostCountEl = document.getElementById("boostCount");
 
       const activities = window.financeActivities || [];
@@ -140,6 +145,7 @@
         alpha: "Alpha 模块",
         small: "撸毛小活动模块",
         flash: "闪赚模块",
+        onchain: "链上赚币",
         boost: "Boost 活动",
       };
       let selectedPlatform = "all";
@@ -183,6 +189,7 @@
         smallCountEl.textContent = activities.filter((item) => item.platform === "Binance" && moduleOf(item) === "small").length;
         alphaCountEl.textContent = activities.filter((item) => item.platform === "Binance" && moduleOf(item) === "alpha").length;
         flashCountEl.textContent = activities.filter((item) => item.platform === "OKX" && moduleOf(item) === "flash").length;
+        onchainCountEl.textContent = activities.filter((item) => item.platform === "OKX" && moduleOf(item) === "onchain").length;
         boostCountEl.textContent = activities.filter((item) => item.platform === "OKX" && moduleOf(item) === "boost").length;
       }
 
