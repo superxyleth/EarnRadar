@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="EarnRadar signal logo">
+  <rect width="128" height="128" rx="28" fill="#111827"/>
+  <path d="M25 84c14-28 36-42 78-43" fill="none" stroke="#f0b90b" stroke-width="11" stroke-linecap="round"/>
+  <path d="M36 89c12-17 30-26 58-27" fill="none" stroke="#5eead4" stroke-width="8" stroke-linecap="round"/>
+  <circle cx="40" cy="86" r="12" fill="#f0b90b"/>
+  <path d="M73 31l13 24 27 4-20 18 5 27-25-13-25 13 5-27-20-18 27-4z" fill="#f8fafc"/>
+</svg>

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="EarnRadar radar coin logo">
+  <rect width="128" height="128" rx="28" fill="#0b0e11"/>
+  <circle cx="64" cy="64" r="43" fill="#f0b90b"/>
+  <circle cx="64" cy="64" r="29" fill="none" stroke="#0b0e11" stroke-width="9"/>
+  <path d="M64 31v18m0 30v18M31 64h18m30 0h18" stroke="#0b0e11" stroke-width="8" stroke-linecap="round"/>
+  <circle cx="64" cy="64" r="9" fill="#0b0e11"/>
+  <path d="M78 50l20-20" stroke="#f5f5f5" stroke-width="8" stroke-linecap="round"/>
+</svg>

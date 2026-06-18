@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="EarnRadar ER monogram logo">
+  <rect width="128" height="128" rx="24" fill="#f0b90b"/>
+  <rect x="16" y="16" width="96" height="96" rx="18" fill="#0b0e11"/>
+  <path d="M35 35h40v13H51v11h21v13H51v12h26v13H35z" fill="#f0b90b"/>
+  <path d="M76 35h11c15 0 25 8 25 22 0 9-4 16-12 19l14 21H96L84 79h-8V66h9c8 0 11-3 11-9s-4-9-12-9h-8z" fill="#f5f5f5"/>
+</svg>

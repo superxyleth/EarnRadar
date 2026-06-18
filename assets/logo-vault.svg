@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="EarnRadar vault logo">
+  <rect width="128" height="128" rx="28" fill="#0f1217"/>
+  <path d="M31 46c0-18 14-31 33-31s33 13 33 31v11H82V46c0-10-7-17-18-17s-18 7-18 17v11H31z" fill="#f0b90b"/>
+  <rect x="24" y="50" width="80" height="58" rx="14" fill="#f0b90b"/>
+  <circle cx="64" cy="79" r="17" fill="#0b0e11"/>
+  <path d="M64 68v22M53 79h22" stroke="#f0b90b" stroke-width="7" stroke-linecap="round"/>
+</svg>
