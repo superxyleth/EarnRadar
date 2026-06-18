@@ -130,7 +130,20 @@
       const onchainCountEl = document.getElementById("onchainCount");
       const boostCountEl = document.getElementById("boostCount");
 
-      const activities = window.financeActivities || [];
+      const allActivities = window.financeActivities || [];
+      const now = new Date();
+
+      function parseBeijingTime(value) {
+        const normalized = String(value).trim().replace(" ", "T");
+        return new Date(`${normalized}+08:00`);
+      }
+
+      function isListedActivity(item) {
+        const endAt = parseBeijingTime(item.endAt);
+        return Number.isNaN(endAt.getTime()) || endAt > now;
+      }
+
+      const activities = allActivities.filter(isListedActivity);
       const defaultModules = {
         Binance: "finance",
         OKX: "flash",
@@ -176,6 +189,15 @@
         if (item.module) return item.module;
         if (item.platform === "OKX") return "flash";
         return item.module || "finance";
+      }
+
+      function defaultModuleFor(platform) {
+        const moduleOrder = {
+          Binance: ["finance", "alpha", "small"],
+          OKX: ["flash", "onchain", "boost"],
+        };
+        const modules = moduleOrder[platform] || [];
+        return modules.find((module) => activities.some((item) => item.platform === platform && moduleOf(item) === module)) || defaultModules[platform];
       }
 
       function updateCounts(filtered) {
@@ -276,7 +298,7 @@
         if (!tab) return;
         selectedPlatform = tab.dataset.platform;
         if (defaultModules[selectedPlatform]) {
-          selectedModule = defaultModules[selectedPlatform];
+          selectedModule = defaultModuleFor(selectedPlatform);
           [moduleTabsEl, okxModuleTabsEl].forEach((group) => {
             group.querySelectorAll(".nav-item").forEach((item) => {
               item.classList.toggle("active", item.dataset.module === selectedModule);
