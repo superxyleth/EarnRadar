@@ -79,6 +79,20 @@
             </button>
           </div>
         </section>
+
+        <section id="tutorialTabs" class="nav-group" aria-label="教程模块">
+          <div class="nav-title">教程模块</div>
+          <div class="nav-list tutorial-list">
+            <button class="nav-item tutorial-item" type="button" data-tutorial="binance-alpha">
+              <span>BN Alpha 教程</span>
+              <strong>Guide</strong>
+            </button>
+            <button class="nav-item tutorial-item" type="button" data-tutorial="okx-boost">
+              <span>OKX Boost 教程</span>
+              <strong>Guide</strong>
+            </button>
+          </div>
+        </section>
       </aside>
 
       <section class="content">
@@ -116,6 +130,8 @@
       const exchangeTabsEl = document.getElementById("exchangeTabs");
       const moduleTabsEl = document.getElementById("moduleTabs");
       const okxModuleTabsEl = document.getElementById("okxModuleTabs");
+      const tutorialTabsEl = document.getElementById("tutorialTabs");
+      const summaryEl = document.querySelector(".summary");
       const activityCountEl = document.getElementById("activityCount");
       const resultCountEl = document.getElementById("resultCount");
       const activeCountEl = document.getElementById("activeCount");
@@ -162,8 +178,124 @@
         onchain: "链上赚币",
         boost: "Boost 活动",
       };
+      const tutorials = {
+        "binance-alpha": {
+          title: "BN Alpha 教程",
+          meta: "积分构成、刷分技巧、空投 / TGE / Booster 参与方式",
+          source: "整理自导入文档：一文带你了解目前所有 Alpha 空投板块（入门教程+萌新图示指导）",
+          hero: "./assets/tutorials/alpha-1.png",
+          sections: [
+            {
+              title: "Alpha 积分构成",
+              items: [
+                "Alpha 积分 = 余额积分 + 交易量积分。",
+                "余额积分可以理解为 CEX 账户与币安钱包的可计入余额，部分非主流钱包资产不支持计分。",
+                "余额档位：≥100 记 1 分，≥1,000 记 2 分，≥10,000 记 3 分，≥100,000 记 4 分。",
+                "交易量积分按 Alpha 板块交易量递增：2 记 1 分，4 记 2 分，8 记 3 分，16 记 4 分，32 记 5 分；每多 1 分需要约翻倍交易量。",
+              ],
+            },
+            {
+              title: "积分用途",
+              items: [
+                "Alpha 空投通常消耗 15 积分领取空投代币，不需要额外主要支出。",
+                "Alpha TGE 通常消耗 15 积分，并需要少量 BNB 以较低价格购买代币。",
+                "Alpha Booster 通常消耗 2 分或 5 分，需要完成任务并承担少量磨损，适合低门槛参与。",
+              ],
+            },
+            {
+              title: "交易积分刷取技巧",
+              items: [
+                "进入 Alpha 板块后优先查看“积分+”板块。",
+                "多数情况下优先选择积分+里交易量最大、流动性更好的代币，降低被夹和滑点风险。",
+                "Alpha 交易量通常只计算买入交易量；带有“积分 ×2 / ×4”的代币可以放大计分交易量。",
+                "例如积分 ×4 的代币买入 100U，可按 400U Alpha 交易量计入，从而减少真实交易量和磨损。",
+              ],
+            },
+            {
+              title: "积分周期与目标",
+              items: [
+                "Alpha 积分有 15 天周期，超过 15 天会失效，避免积分长期通胀。",
+                "例如 6 月 1 日获得的积分，到 6 月 16 日对应积分会失效。",
+                "新手配置可先参考余额积分 ≥1,000 对应 2 分，再补交易量积分到 15 或 16 分。",
+                "建议自己做表格或让 agent 记录每日积分、过期时间、消耗和收益。",
+              ],
+            },
+            {
+              title: "空投、TGE 与 Booster",
+              items: [
+                "Alpha 空投一般需要 200+ 积分，收益常见 30U+，需要准点抢，热门空投可能一两分钟结束。",
+                "Alpha TGE 分数门槛通常也在 200+，分数够时按规定时间参与即可，不像空投那样抢名额；想拿满通常需要准备约 3 BNB。",
+                "Alpha Booster 门槛更低，常见固定 ≥61 分，名额更多、持续时间更长，但收益通常更低。",
+                "Booster 任务可能包含链上交互或小额成本，参与前要核算 Gas、滑点和任务磨损。",
+              ],
+            },
+            {
+              title: "返佣说明",
+              items: [
+                "返佣可以理解为手续费折扣，例如 30% 返佣相当于手续费约 7 折。",
+                "交易所返佣通常需要注册时填写邀请码，注册后多数情况无法补填。",
+                "钱包返佣可在钱包内填写邀请码；文档中给出的邀请码为 SUPERXYL，标注为 30% 自动返佣。",
+              ],
+            },
+          ],
+          images: [
+            "./assets/tutorials/alpha-2.png",
+            "./assets/tutorials/alpha-3.png",
+            "./assets/tutorials/alpha-4.png",
+            "./assets/tutorials/alpha-5.png",
+            "./assets/tutorials/alpha-6.png",
+            "./assets/tutorials/alpha-7.png",
+            "./assets/tutorials/alpha-8.png",
+          ],
+        },
+        "okx-boost": {
+          title: "OKX Boost 教程",
+          meta: "X Launch、X Stake、交易竞赛的通用参与流程与检查清单",
+          source: "根据当前 OKX Boost 活动模块整理",
+          hero: "./assets/logo-compass.svg",
+          sections: [
+            {
+              title: "Boost 活动类型",
+              items: [
+                "X Launch：通常按 Boost 资格、钱包任务或快照条件参与新项目奖励分配。",
+                "X Stake：在 OKX Wallet 活动页质押指定代币，按质押数量、加成倍数和快照规则分配奖励。",
+                "X Campaign / Trading Competition：按链上交易量、排行榜名次或任务完成情况分配奖励。",
+              ],
+            },
+            {
+              title: "参与前准备",
+              items: [
+                "确认使用 OKX Wallet，并检查活动支持的网络，例如 X Layer、Base、Solana 等。",
+                "准备活动要求的资产和链上 Gas，常见资产包括 USDT、OKB、xETH、xBETH、xSOL、USDC 等。",
+                "先看活动时间、奖池、参与门槛、质押上限、领取截止时间和地区限制。",
+                "如果活动有 Boost 交易量加成，先确认自己的 Boost 等级或交易量是否值得参与。",
+              ],
+            },
+            {
+              title: "通用参与流程",
+              items: [
+                "从 OKX Wallet 进入 Boost 页面，选择 X Launch、X Stake 或交易竞赛活动。",
+                "连接钱包后核对活动详情，确认奖励币种、活动周期、快照规则和风险提示。",
+                "按页面要求完成质押、交易、任务或报名动作，并保留交易记录。",
+                "活动结束后回到活动页查看奖励发放或领取状态，注意领取期限。",
+              ],
+            },
+            {
+              title: "风险与记录",
+              items: [
+                "链上活动会产生 Gas、滑点和合约交互风险，参与前要按预期收益倒推可接受成本。",
+                "第三方项目活动可能存在代币价格波动、流动性不足或规则调整风险。",
+                "建议记录活动名称、开始/结束时间、投入资产、交易哈希、领取时间和预计收益。",
+                "活动页面展示的 APR、奖池和名额可能实时变化，最终以 OKX Wallet 官方活动页为准。",
+              ],
+            },
+          ],
+          images: [],
+        },
+      };
       let selectedPlatform = "all";
       let selectedModule = "finance";
+      let selectedTutorial = "";
 
       function escapeHtml(value) {
         return String(value)
@@ -223,7 +355,63 @@
         viewMetaEl.textContent = `${filtered.length} 条活动，按开始时间倒序排列`;
       }
 
+      function renderTutorial(tutorialId) {
+        const tutorial = tutorials[tutorialId];
+        if (!tutorial) return;
+        moduleTabsEl.classList.add("hidden");
+        okxModuleTabsEl.classList.add("hidden");
+        summaryEl.hidden = true;
+        searchEl.hidden = true;
+        viewTitleEl.textContent = tutorial.title;
+        viewMetaEl.textContent = tutorial.meta;
+        listEl.innerHTML = `
+          <article class="tutorial-card">
+            <div class="tutorial-hero">
+              <div>
+                <span class="tutorial-kicker">Tutorial</span>
+                <h3>${escapeHtml(tutorial.title)}</h3>
+                <p>${escapeHtml(tutorial.meta)}</p>
+              </div>
+              <img src="${escapeHtml(tutorial.hero)}" alt="${escapeHtml(tutorial.title)}" />
+            </div>
+            <div class="tutorial-body">
+              ${tutorial.sections
+                .map(
+                  (section) => `
+                    <section class="tutorial-section">
+                      <h4>${escapeHtml(section.title)}</h4>
+                      <ul>
+                        ${section.items.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}
+                      </ul>
+                    </section>
+                  `,
+                )
+                .join("")}
+              ${
+                tutorial.images.length
+                  ? `<section class="tutorial-section">
+                      <h4>图示参考</h4>
+                      <div class="tutorial-gallery">
+                        ${tutorial.images
+                          .map((image, index) => `<img src="${escapeHtml(image)}" alt="${escapeHtml(tutorial.title)} 图示 ${index + 1}" loading="lazy" />`)
+                          .join("")}
+                      </div>
+                    </section>`
+                  : ""
+              }
+              <p class="tutorial-source">${escapeHtml(tutorial.source)}</p>
+            </div>
+          </article>
+        `;
+      }
+
       function render() {
+        if (selectedTutorial) {
+          renderTutorial(selectedTutorial);
+          return;
+        }
+        summaryEl.hidden = false;
+        searchEl.hidden = false;
         const filtered = filteredActivities();
         moduleTabsEl.classList.toggle("hidden", selectedPlatform !== "Binance");
         okxModuleTabsEl.classList.toggle("hidden", selectedPlatform !== "OKX");
@@ -297,6 +485,8 @@
       exchangeTabsEl.addEventListener("click", (event) => {
         const tab = event.target.closest(".nav-item");
         if (!tab) return;
+        selectedTutorial = "";
+        tutorialTabsEl.querySelectorAll(".nav-item").forEach((item) => item.classList.remove("active"));
         selectedPlatform = tab.dataset.platform;
         if (defaultModules[selectedPlatform]) {
           selectedModule = defaultModuleFor(selectedPlatform);
@@ -323,8 +513,20 @@
       okxModuleTabsEl.addEventListener("click", (event) => {
         const tab = event.target.closest(".nav-item");
         if (!tab) return;
+        selectedTutorial = "";
+        tutorialTabsEl.querySelectorAll(".nav-item").forEach((item) => item.classList.remove("active"));
         selectedModule = tab.dataset.module;
         okxModuleTabsEl.querySelectorAll(".nav-item").forEach((item) => {
+          item.classList.toggle("active", item === tab);
+        });
+        render();
+      });
+      tutorialTabsEl.addEventListener("click", (event) => {
+        const tab = event.target.closest(".nav-item");
+        if (!tab) return;
+        selectedTutorial = tab.dataset.tutorial;
+        exchangeTabsEl.querySelectorAll(".nav-item").forEach((item) => item.classList.remove("active"));
+        tutorialTabsEl.querySelectorAll(".nav-item").forEach((item) => {
           item.classList.toggle("active", item === tab);
         });
         render();
