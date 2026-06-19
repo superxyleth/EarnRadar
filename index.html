@@ -184,6 +184,8 @@
           meta: "积分构成、刷分技巧、空投 / TGE / Booster 参与方式",
           source: "整理自导入文档：一文带你了解目前所有 Alpha 空投板块（入门教程+萌新图示指导）",
           hero: "./assets/tutorials/alpha-1.png",
+          documentUrl: "./assets/tutorials/alpha-notion/index.html",
+          externalUrl: "https://navy-efraasia-2c6.notion.site/Alpha-3847eb8ce132800d9463ddf21a50b45d",
           sections: [
             {
               title: "Alpha 积分构成",
@@ -365,39 +367,54 @@
         viewTitleEl.textContent = tutorial.title;
         viewMetaEl.textContent = tutorial.meta;
         listEl.innerHTML = `
-          <article class="tutorial-card">
-            <div class="tutorial-hero">
-              <div>
-                <span class="tutorial-kicker">Tutorial</span>
-                <h3>${escapeHtml(tutorial.title)}</h3>
-                <p>${escapeHtml(tutorial.meta)}</p>
-              </div>
-              <img src="${escapeHtml(tutorial.hero)}" alt="${escapeHtml(tutorial.title)}" />
-            </div>
+          <article class="tutorial-card${tutorial.documentUrl ? " document-view" : ""}">
+            ${
+              tutorial.documentUrl
+                ? ""
+                : `<div class="tutorial-hero">
+                    <div>
+                      <span class="tutorial-kicker">Tutorial</span>
+                      <h3>${escapeHtml(tutorial.title)}</h3>
+                      <p>${escapeHtml(tutorial.meta)}</p>
+                    </div>
+                    <img src="${escapeHtml(tutorial.hero)}" alt="${escapeHtml(tutorial.title)}" />
+                  </div>`
+            }
             <div class="tutorial-body">
-              ${tutorial.sections
-                .map(
-                  (section) => `
-                    <section class="tutorial-section">
-                      <h4>${escapeHtml(section.title)}</h4>
-                      <ul>
-                        ${section.items.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}
-                      </ul>
-                    </section>
-                  `,
-                )
-                .join("")}
               ${
-                tutorial.images.length
-                  ? `<section class="tutorial-section">
-                      <h4>图示参考</h4>
-                      <div class="tutorial-gallery">
-                        ${tutorial.images
-                          .map((image, index) => `<img src="${escapeHtml(image)}" alt="${escapeHtml(tutorial.title)} 图示 ${index + 1}" loading="lazy" />`)
-                          .join("")}
-                      </div>
-                    </section>`
-                  : ""
+                tutorial.documentUrl
+                  ? `<section class="tutorial-embed">
+                      <iframe src="${escapeHtml(tutorial.documentUrl)}" title="${escapeHtml(tutorial.title)} 原文教程" loading="lazy"></iframe>
+                    </section>
+                    ${
+                      tutorial.externalUrl
+                        ? `<a class="button tutorial-open-link" href="${escapeHtml(tutorial.externalUrl)}" target="_blank" rel="noreferrer">打开 Notion 原文</a>`
+                        : ""
+                    }`
+                  : `${tutorial.sections
+                      .map(
+                        (section) => `
+                          <section class="tutorial-section">
+                            <h4>${escapeHtml(section.title)}</h4>
+                            <ul>
+                              ${section.items.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}
+                            </ul>
+                          </section>
+                        `,
+                      )
+                      .join("")}
+                    ${
+                      tutorial.images.length
+                        ? `<section class="tutorial-section">
+                            <h4>图示参考</h4>
+                            <div class="tutorial-gallery">
+                              ${tutorial.images
+                                .map((image, index) => `<img src="${escapeHtml(image)}" alt="${escapeHtml(tutorial.title)} 图示 ${index + 1}" loading="lazy" />`)
+                                .join("")}
+                            </div>
+                          </section>`
+                        : ""
+                    }`
               }
               <p class="tutorial-source">${escapeHtml(tutorial.source)}</p>
             </div>

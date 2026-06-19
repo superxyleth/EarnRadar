@@ -613,6 +613,20 @@ h1 {
   padding: 16px;
 }
 
+.tutorial-card.document-view .tutorial-body {
+  padding: 0;
+}
+
+.tutorial-card.document-view .tutorial-open-link,
+.tutorial-card.document-view .tutorial-source {
+  margin-right: 16px;
+  margin-left: 16px;
+}
+
+.tutorial-card.document-view .tutorial-source {
+  margin-bottom: 16px;
+}
+
 .tutorial-section {
   padding: 14px;
   border: 1px solid #2b3139;
@@ -636,6 +650,26 @@ h1 {
   color: var(--muted);
   font-size: 13px;
   line-height: 1.7;
+}
+
+.tutorial-embed {
+  overflow: hidden;
+  border: 1px solid #2b3139;
+  border-radius: 12px;
+  background: #fff;
+}
+
+.tutorial-embed iframe {
+  display: block;
+  width: 100%;
+  height: min(76vh, 860px);
+  min-height: 640px;
+  border: 0;
+  background: #fff;
+}
+
+.tutorial-open-link {
+  justify-self: start;
 }
 
 .tutorial-gallery {
@@ -729,6 +763,10 @@ h1 {
   .tutorial-hero img {
     width: 88px;
     height: 88px;
+  }
+
+  .tutorial-embed iframe {
+    min-height: 520px;
   }
 
   .button {
