@@ -250,46 +250,9 @@
         },
         "okx-boost": {
           title: "OKX Boost 教程",
-          meta: "X Launch、X Stake、交易竞赛的通用参与流程与检查清单",
-          source: "根据当前 OKX Boost 活动模块整理",
+          meta: "内容待补充",
           hero: "./assets/logo-compass.svg",
-          sections: [
-            {
-              title: "Boost 活动类型",
-              items: [
-                "X Launch：通常按 Boost 资格、钱包任务或快照条件参与新项目奖励分配。",
-                "X Stake：在 OKX Wallet 活动页质押指定代币，按质押数量、加成倍数和快照规则分配奖励。",
-                "X Campaign / Trading Competition：按链上交易量、排行榜名次或任务完成情况分配奖励。",
-              ],
-            },
-            {
-              title: "参与前准备",
-              items: [
-                "确认使用 OKX Wallet，并检查活动支持的网络，例如 X Layer、Base、Solana 等。",
-                "准备活动要求的资产和链上 Gas，常见资产包括 USDT、OKB、xETH、xBETH、xSOL、USDC 等。",
-                "先看活动时间、奖池、参与门槛、质押上限、领取截止时间和地区限制。",
-                "如果活动有 Boost 交易量加成，先确认自己的 Boost 等级或交易量是否值得参与。",
-              ],
-            },
-            {
-              title: "通用参与流程",
-              items: [
-                "从 OKX Wallet 进入 Boost 页面，选择 X Launch、X Stake 或交易竞赛活动。",
-                "连接钱包后核对活动详情，确认奖励币种、活动周期、快照规则和风险提示。",
-                "按页面要求完成质押、交易、任务或报名动作，并保留交易记录。",
-                "活动结束后回到活动页查看奖励发放或领取状态，注意领取期限。",
-              ],
-            },
-            {
-              title: "风险与记录",
-              items: [
-                "链上活动会产生 Gas、滑点和合约交互风险，参与前要按预期收益倒推可接受成本。",
-                "第三方项目活动可能存在代币价格波动、流动性不足或规则调整风险。",
-                "建议记录活动名称、开始/结束时间、投入资产、交易哈希、领取时间和预计收益。",
-                "活动页面展示的 APR、奖池和名额可能实时变化，最终以 OKX Wallet 官方活动页为准。",
-              ],
-            },
-          ],
+          sections: [],
           images: [],
         },
       };
@@ -364,12 +327,16 @@
         searchEl.hidden = true;
         viewTitleEl.textContent = tutorial.title;
         viewMetaEl.textContent = tutorial.meta;
+        const hasDocument = Boolean(tutorial.documentUrl);
+        const emptyTutorial = !hasDocument && (!tutorial.sections || tutorial.sections.length === 0) && (!tutorial.images || tutorial.images.length === 0);
         listEl.innerHTML = `
-          <article class="tutorial-card${tutorial.documentUrl ? " document-view" : ""}">
+          <article class="tutorial-card${hasDocument ? " document-view" : ""}">
             ${
-              tutorial.documentUrl
+              hasDocument
                 ? ""
-                : `<div class="tutorial-hero">
+                : emptyTutorial
+                  ? ""
+                  : `<div class="tutorial-hero">
                     <div>
                       <span class="tutorial-kicker">Tutorial</span>
                       <h3>${escapeHtml(tutorial.title)}</h3>
@@ -380,10 +347,14 @@
             }
             <div class="tutorial-body">
               ${
-                tutorial.documentUrl
+                hasDocument
                   ? `<section class="tutorial-embed">
                       <iframe src="${escapeHtml(tutorial.documentUrl)}" title="${escapeHtml(tutorial.title)} 原文教程" loading="lazy"></iframe>
                     </section>`
+                  : emptyTutorial
+                    ? `<section class="tutorial-empty">
+                        <p>内容待补充。</p>
+                      </section>`
                   : `${tutorial.sections
                       .map(
                         (section) => `

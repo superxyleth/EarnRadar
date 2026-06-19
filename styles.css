@@ -652,6 +652,19 @@ h1 {
   line-height: 1.7;
 }
 
+.tutorial-empty {
+  padding: 28px;
+  border: 1px solid rgba(240, 185, 11, 0.16);
+  border-radius: 12px;
+  background: #0f1217;
+  color: var(--muted);
+  text-align: center;
+}
+
+.tutorial-empty p {
+  font-size: 13px;
+}
+
 .tutorial-embed {
   overflow: hidden;
   border: 1px solid #2b3139;
