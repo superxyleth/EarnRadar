@@ -155,12 +155,13 @@
         return new Date(`${normalized}+08:00`);
       }
 
-      function isListedActivity(item) {
+      function statusOf(item) {
         const endAt = parseBeijingTime(item.endAt);
-        return Number.isNaN(endAt.getTime()) || endAt > now;
+        if (!Number.isNaN(endAt.getTime()) && endAt <= now) return "已结束";
+        return item.status || "进行中";
       }
 
-      const activities = allActivities.filter(isListedActivity);
+      const activities = allActivities;
       const defaultModules = {
         Binance: "finance",
         OKX: "flash",
@@ -299,7 +300,7 @@
       function updateCounts(filtered) {
         activityCountEl.textContent = activities.length;
         resultCountEl.textContent = filtered.length;
-        activeCountEl.textContent = activities.filter((item) => item.status === "进行中").length;
+        activeCountEl.textContent = activities.filter((item) => statusOf(item) === "进行中").length;
         allCountEl.textContent = activities.length;
         binanceCountEl.textContent = activities.filter((item) => item.platform === "Binance").length;
         okxCountEl.textContent = activities.filter((item) => item.platform === "OKX").length;
@@ -417,7 +418,7 @@
                       </div>
                       <h3>${escapeHtml(item.title)}</h3>
                     </div>
-                    <span class="status-pill">${escapeHtml(item.status)}</span>
+                    <span class="status-pill">${escapeHtml(statusOf(item))}</span>
                   </div>
 
                   <div class="signal-grid">
