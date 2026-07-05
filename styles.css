@@ -410,6 +410,11 @@ h1 {
   color: var(--success);
 }
 
+.status-pill.ended {
+  background: rgba(240, 185, 11, 0.16);
+  color: var(--gold);
+}
+
 .signal-grid {
   display: grid;
   grid-template-columns: 1.4fr 0.8fr 0.85fr 1.25fr;

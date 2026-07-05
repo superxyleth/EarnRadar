@@ -279,7 +279,12 @@
             const matchesModule = !defaultModules[selectedPlatform] || moduleOf(item) === selectedModule;
             return matchesPlatform && matchesModule && (!query || text.includes(query));
           })
-          .sort((a, b) => Date.parse(b.startAt.replace(" ", "T")) - Date.parse(a.startAt.replace(" ", "T")));
+          .sort((a, b) => {
+            const aEnded = statusOf(a) === "已结束";
+            const bEnded = statusOf(b) === "已结束";
+            if (aEnded !== bEnded) return aEnded ? 1 : -1;
+            return Date.parse(b.startAt.replace(" ", "T")) - Date.parse(a.startAt.replace(" ", "T"));
+          });
       }
 
       function moduleOf(item) {
@@ -418,7 +423,7 @@
                       </div>
                       <h3>${escapeHtml(item.title)}</h3>
                     </div>
-                    <span class="status-pill">${escapeHtml(statusOf(item))}</span>
+                    <span class="status-pill${statusOf(item) === "已结束" ? " ended" : ""}">${escapeHtml(statusOf(item))}</span>
                   </div>
 
                   <div class="signal-grid">
