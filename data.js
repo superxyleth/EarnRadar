@@ -1892,4 +1892,33 @@ window.financeActivities = [
     updatedAt: "2026-07-07",
   },
 
+  {
+    id: "binance-spot-btc-eth-sol-xrp-500k-usdc-202607",
+    platform: "Binance",
+    module: "small",
+    title: "现货交易量锦标赛：交易 BTC / ETH / SOL / XRP 瓜分 500,000 USDC",
+    productType: "现货交易竞赛",
+    status: "即将开始",
+    stablecoin: "BTC/USDT / ETH/USDT / SOL/USDT / XRP/USDT",
+    apr: "500,000 USDC 代币券奖池",
+    startAt: "2026-07-08 18:00",
+    endAt: "2026-07-22 18:00",
+    timezone: "UTC+8 北京",
+    minAmount: "活动页报名；指定现货交易对累计交易量至少 500 美元等值",
+    activityAmount: "总奖池 500,000 USDC 代币券；主奖池 400,000 USDC，限时奖池两轮合计 100,000 USDC。",
+    rewardRule: [
+      "活动期间在活动页面点击【立即参加】注册，并交易 BTC/USDT、ETH/USDT、SOL/USDT、XRP/USDT 任一指定现货交易对。",
+      "累计交易至少 500 美元等值后才具备现货交易量锦标赛奖励资格；买入和卖出订单均计入交易量。",
+      "主奖池按 2026-07-08 18:00 至 2026-07-22 18:00（UTC+8）累计交易量排名分配：第 1 名 15,000 USDC，第 2 名 12,500 USDC，第 3 名 10,000 USDC，第 4 名 7,500 USDC，第 5 名 5,000 USDC。",
+      "主奖池第 6-20 名均分 50,000 USDC，第 21-50 名均分 50,000 USDC，第 51-200 名均分 80,000 USDC，第 201-1,000 名均分 70,000 USDC，其余达标用户均分 100,000 USDC 且每人上限 5 USDC。",
+      "限时奖池分两轮统计：2026-07-08 18:00 至 2026-07-12 18:00，以及 2026-07-12 18:01 至 2026-07-16 18:00（UTC+8）；每轮前 5 名分别获得 15,000、12,500、10,000、7,500、5,000 USDC。",
+      "零费率和负费率交易量不计入；交易手续费或 Gas 费不计入任务或锦标赛最终交易量。",
+      "代币券奖励将于 2026-08-05 结束前发放，有效期 21 天；排行榜至少每 24 小时更新一次，资格、地区限制和最终规则以 Binance 官方公告为准。",
+    ],
+    tutorialUrl: "https://www.binance.com/zh-CN/support/announcement/detail/17668cb55d4f4d09931f34b882a663b8",
+    officialUrl: "https://www.binance.com/zh-CN/support/announcement/detail/17668cb55d4f4d09931f34b882a663b8",
+    sourceNote: "规则来源：Binance 官方公告 17668cb55d4f4d09931f34b882a663b8，发布于 2026-07-08。",
+    updatedAt: "2026-07-08",
+  },
+
 ];
