@@ -2157,5 +2157,61 @@ window.financeActivities = [
     "officialUrl": "https://www.okx.com/zh-hans/help/okx-slx-trade-to-earn-trade-to-share-4-000-000-slx",
     "sourceNote": "规则来源：OKX 官方公告《欧易 x SLX 交易赚币：交易瓜分 4,000,000 SLX 奖励》，发布于 2026-07-10。",
     "updatedAt": "2026-07-11"
+  },
+  {
+    "id": "binance-alpha-bill-trading-202607",
+    "platform": "Binance",
+    "module": "alpha",
+    "title": "Alpha 交易 Billions Network (BILL)：瓜分 30 万美元等值奖励",
+    "productType": "Alpha 交易竞赛",
+    "status": "进行中",
+    "stablecoin": "BILL",
+    "apr": "每批 4,048,000 BILL；两批合计 8,096,000 BILL",
+    "startAt": "2026-07-10 21:00",
+    "endAt": "2026-07-24 21:00",
+    "timezone": "UTC+8 北京",
+    "minAmount": "需在币安 App 活动页报名；按 BILL 累计买入交易量排名前 2,300 名。",
+    "activityAmount": "分两批排名，每批前 2,300 名均分 4,048,000 BILL，每人 1,760 BILL；两批活动期分别为 2026-07-10 21:00 至 2026-07-17 21:00，及 2026-07-17 21:00 至 2026-07-24 21:00（UTC+8）。",
+    "rewardRule": [
+      "活动期间通过 Binance Wallet（Keyless）或 Binance Alpha 交易 BILL，可按 BILL 累计买入交易量参与排名；卖出交易不计入本活动交易量。",
+      "用户需在币安 App 活动页面点击 Join / 参与完成报名；仅报名成功后产生的交易量计入有效交易量。",
+      "每批活动前 2,300 名用户均分 4,048,000 BILL，每位获奖用户 1,760 BILL；两批活动分别独立统计和结算。",
+      "早鸟加成按活动日计算：第 1-2 天 2.0x，第 3-4 天 1.8x，第 5 天 1.5x，第 6 天 1.3x，第 7 天 1.0x。",
+      "新锐交易者加成适用于活动开始前三天快照时历史 Alpha 交易竞赛获奖少于 3 次的用户，可在上限内获得 1.2x 交易量加成。",
+      "第三方 dApp 交易、跨链桥交易，以及 Alpha-to-Alpha 交易对产生的交易量不计入本活动排名。",
+      "奖励将在 2026-08-07 21:00（UTC+8）前开放领取；符合资格用户需在奖励可领取后 14 天内完成领取，逾期视为放弃。"
+    ],
+    "tutorialUrl": "https://www.binance.com/zh-CN/alpha",
+    "officialUrl": "https://www.binance.com/zh-CN/support/announcement/detail/6e011403a2884f3ebb2bc342e970440b",
+    "sourceNote": "规则来源：Binance 官方公告《Binance Alpha Trading Competition: Trade Billions Network (BILL) and Share $300K Worth of Rewards (2026-07-10)》6e011403a2884f3ebb2bc342e970440b，发布于 2026-07-10。",
+    "updatedAt": "2026-07-12"
+  },
+  {
+    "id": "binance-tree-traders-league-s3-202607",
+    "platform": "Binance",
+    "module": "small",
+    "title": "币安交易者联盟第三季：交易 TREE 瓜分 4,500,000 TREE",
+    "productType": "现货交易活动",
+    "status": "进行中",
+    "stablecoin": "TREE/USDT、TREE/USDC",
+    "apr": "4,500,000 TREE 奖池",
+    "startAt": "2026-07-10 18:00",
+    "endAt": "2026-07-17 18:00",
+    "timezone": "UTC+8 北京",
+    "minAmount": "活动页报名；TREE/USDT、TREE/USDC 累计现货交易量至少 500 美元等值。",
+    "activityAmount": "总奖池 4,500,000 TREE 代币券；按 TREE/USDT、TREE/USDC 累计现货交易量排名分配。",
+    "rewardRule": [
+      "完成身份认证的新用户、普通用户和 VIP 用户可参与；币安现货流动性提供者计划成员及币安经纪商不符合资格。",
+      "用户需在活动页点击 Join Now / 立即参与完成报名，并在活动期间交易 TREE/USDT 或 TREE/USDC 指定现货交易对。",
+      "累计交易量达到至少 500 美元等值后方可参与交易量锦标赛排名，买入和卖出订单均计入有效交易量。",
+      "排名奖励：第 1 名 270,000 TREE，第 2 名 225,000 TREE，第 3 名 180,000 TREE，第 4 名 135,000 TREE，第 5 名 90,000 TREE。",
+      "区间奖励：第 6-20 名均分 675,000 TREE，第 21-50 名均分 450,000 TREE，第 51-200 名均分 765,000 TREE，第 201-1,000 名均分 810,000 TREE，其余合格用户均分 900,000 TREE，单人上限 68 TREE。",
+      "零交易手续费交易对交易量、交易手续费和 Gas 费不计入最终交易量；排行榜通常每小时更新，最终交易量和排名以 Binance 计算结果为准。",
+      "TREE 代币券奖励将于 2026-08-01 前发放至 Rewards Hub，并在发放后 21 天内过期；参与前需确认地区限制和官方最终条款。"
+    ],
+    "tutorialUrl": "https://www.binance.com/zh-CN/activity/trading-competition/202606tradersleague3/TREE-spot-trading-competition",
+    "officialUrl": "https://www.binance.com/zh-CN/support/announcement/detail/6635af3aea7f45ada1f891f772b41174",
+    "sourceNote": "规则来源：Binance 官方公告《Binance Traders League Season 3: Trade TREE to Share Up to 4,500,000 TREE Token Vouchers》6635af3aea7f45ada1f891f772b41174，发布于 2026-07-10。",
+    "updatedAt": "2026-07-12"
   }
 ];
