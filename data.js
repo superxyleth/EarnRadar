@@ -2213,5 +2213,30 @@ window.financeActivities = [
     "officialUrl": "https://www.binance.com/zh-CN/support/announcement/detail/6635af3aea7f45ada1f891f772b41174",
     "sourceNote": "规则来源：Binance 官方公告《Binance Traders League Season 3: Trade TREE to Share Up to 4,500,000 TREE Token Vouchers》6635af3aea7f45ada1f891f772b41174，发布于 2026-07-10。",
     "updatedAt": "2026-07-12"
+  },
+  {
+    "id": "binance-wallet-new-referrer-80-commission-202607",
+    "platform": "Binance",
+    "module": "small",
+    "title": "币安钱包新返佣队长限时招募：最高 60 天 80% 返佣",
+    "productType": "Binance Wallet 返佣活动",
+    "status": "进行中",
+    "stablecoin": "Binance Wallet 返佣",
+    "apr": "最高 60 天 80% 返佣比例",
+    "startAt": "2026-07-13 16:00",
+    "endAt": "2026-07-15 16:00",
+    "timezone": "UTC+8 北京",
+    "minAmount": "仅限此前返佣比例未达到 80% 的 referrer；需提交官方申请表；前 200 名先到先得，满额提前截止。",
+    "activityAmount": "前 200 名合格申请者可享最高 60 天 80% 返佣比例；申请截止 2026-07-15 16:00（UTC+8），满 200 名提前截止。",
+    "rewardRule": [
+      "Binance Wallet 官方 X 于 2026-07-13 发布限时新返佣队长招募，开放给此前返佣比例未达到 80% 的 referrer。",
+      "合格申请者可获得最高 60 天 80% 返佣比例；名额仅前 200 名，按先到先得处理。",
+      "申请截止时间为 2026-07-15 08:00（UTC），即 2026-07-15 16:00（UTC+8）；若 200 个名额提前填满，活动将提前关闭。",
+      "需通过官方贴文中的 Binance Survey / App 链接提交申请；最终资格、地区限制、返佣适用范围和生效时间以 Binance Wallet 官方审核结果及最终规则为准。"
+    ],
+    "tutorialUrl": "https://app.binance.com/uni-qr/survey/ee962c75b0244223bc8e4db03d5da561",
+    "officialUrl": "https://x.com/BinanceWallet/status/2076577861792919850",
+    "sourceNote": "规则来源：Binance Wallet 官方 X 动态 @BinanceWallet（status/2076577861792919850，发布于 2026-07-13）及 Binance 中文官方 X 动态 @binancezh（status/2076580741811745226）；官方贴文提供 Binance Survey 申请入口。",
+    "updatedAt": "2026-07-13"
   }
 ];
