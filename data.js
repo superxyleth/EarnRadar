@@ -2238,5 +2238,32 @@ window.financeActivities = [
     "officialUrl": "https://x.com/BinanceWallet/status/2076577861792919850",
     "sourceNote": "规则来源：Binance Wallet 官方 X 动态 @BinanceWallet（status/2076577861792919850，发布于 2026-07-13）及 Binance 中文官方 X 动态 @binancezh（status/2076580741811745226）；官方贴文提供 Binance Survey 申请入口。",
     "updatedAt": "2026-07-13"
+  },
+  {
+    "id": "binance-alpha-up-trading-300k-202607",
+    "platform": "Binance",
+    "module": "alpha",
+    "title": "Alpha 交易 Unitas (UP)：瓜分 30 万美元等值奖励",
+    "productType": "Binance Alpha Trading Competition",
+    "status": "进行中",
+    "stablecoin": "UP",
+    "apr": "483,200 UP；每批前 3,020 名各得 160 UP",
+    "startAt": "2026-07-18 01:00",
+    "endAt": "2026-08-01 01:00",
+    "timezone": "UTC+8 北京",
+    "minAmount": "需在币安 App 活动页报名；按 UP 累计买入交易量排名前 3,020 名。",
+    "activityAmount": "分两批排名，每批前 3,020 名均分 483,200 UP，每人 160 UP；两批活动期分别为 2026-07-17 21:00 至 2026-07-24 21:00，及 2026-07-24 21:00 至 2026-07-31 21:00（UTC+8）。",
+    "rewardRule": [
+      "活动期间通过 Binance Wallet（Keyless）或 Binance Alpha 交易 UP，可按 UP 累计买入交易量参与排名；卖出交易不计入本活动交易量。",
+      "每批活动前 3,020 名用户均分 483,200 UP，每位获奖用户 160 UP；两批活动分别独立统计和结算。",
+      "引入早鸟加成系数：活动首日买入量享 2.0x 系数加成，次日 1.6x，后续日递减至 1.0x，越早交易加成越高。",
+      "新锐交易者加成：活动开始前三天快照时历史 Alpha 交易竞赛获奖少于 3 次的用户，可在 5,000 USDT 上限内获得 1.2x 交易量加成。",
+      "第三方 dApp 交易、跨链桥交易，以及 Alpha-to-Alpha 交易对产生的交易量不计入本活动排名。",
+      "奖励将在 2026-08-14 21:00（UTC+8）前开放领取；符合资格用户需在奖励可领取后 14 天内完成领取，逾期视为放弃。"
+    ],
+    "tutorialUrl": "https://www.binance.com/zh-CN/alpha",
+    "officialUrl": "https://www.binance.com/zh-CN/support/announcement/list/93",
+    "sourceNote": "规则来源：Binance 官方公告《Binance Alpha Trading Competition: Trade Unitas (UP) and Share $300K Worth of Rewards (2026-07-17)》；发布于 2026-07-17。",
+    "updatedAt": "2026-07-20"
   }
 ];
