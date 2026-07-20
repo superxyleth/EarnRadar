@@ -2345,5 +2345,60 @@ window.financeActivities = [
     "officialUrl": "https://www.okx.com/zh-hans/help/okx-flash-earn-sent-is-now-live-subscribe-btc-oksol-okb-or-sent-to-share-32000000-sent",
     "sourceNote": "规则来源：OKX 官方公告 SENT 闪赚活动；发布于 2026-07-14。",
     "updatedAt": "2026-07-20"
+  },
+  {
+    "id": "okx-flash-xstocks-trading-competition-700-xspy-202607",
+    "platform": "OKX",
+    "module": "flash",
+    "title": "欧易 x 代币化股票现货交易赛：交易瓜分 700 XSPY 奖励",
+    "productType": "现货交易赛 / 交易赚币",
+    "status": "进行中",
+    "stablecoin": "USDT / xStocks（XSPY、XNVDA、XTSLA、XGOOGL、XMSTR、XCRCL、XTSM、XSPCX、XMU、XSNDK、XSKHY）",
+    "apr": "700 XSPY 奖励池",
+    "startAt": "2026-07-16 18:00",
+    "endAt": "2026-07-30 18:00",
+    "timezone": "UTC+8 北京",
+    "minAmount": "活动页报名；活动 1 新用户需净充值 100 USDT 并完成至少 100 USDT 等值任意 xStocks 现货交易；活动 2 瓜分奖池需交易量下限 5,000 USDT；活动 3 平分奖池需 1,000 USDT",
+    "activityAmount": "总奖励 700 XSPY：活动 1 新用户专属 100 XSPY，活动 2 瓜分奖池 400 XSPY，活动 3 平分奖池 200 XSPY。",
+    "rewardRule": [
+      "活动时间为 2026-07-16 18:00 至 2026-07-30 18:00（UTC+8）；需前往活动页面点击【立即参与】按钮报名，按钮变为【已报名】才视为有效参与。",
+      "活动 1（新用户专属）：净充值 100 USDT 等值任意代币，完成至少 100 USDT 等值的任意 xStocks 现货交易并保持持币 24 小时以上，按先到先得瓜分 100 XSPY，每人 0.01 XSPY，限 10,000 人。",
+      "活动 2（瓜分奖池）：交易 11 个指定 xStocks 现货对，有效交易量达 5,000 USDT 等值以上，奖励 = 个人有效交易量 / 总有效交易量 × 400 XSPY，单人上限 4.11 XSPY。",
+      "活动 3（平分奖池）：交易 11 个指定 xStocks 现货对，有效交易量达 1,000 USDT 等值以上，200 XSPY 由有效参与用户平分，单人上限 0.01 XSPY。",
+      "11 个合格 xStocks 现货对：XSPY/USDT（标普 500 ETF）、XNVDA/USDT（英伟达）、XTSLA/USDT（特斯拉）、XGOOGL/USDT（谷歌）、XMSTR/USDT（MicroStrategy）、XCRCL/USDT（Circle）、XTSM/USDT（台积电）、XSPCX/USDT（SpaceX）、XMU/USDT（美光）、XSNDK/USDT（闪迪）、XSKHY/USDT（SK 海力士）。",
+      "买入和卖出订单均计入总交易量计算，但零费率和负费率交易量不计入；简单买入和闪兑成交量不计入。",
+      "仅主账户可参与，子账户不具备资格；奖励于活动结束后 7 天内发放；最终资格、地区限制以 OKX 官方公告为准。"
+    ],
+    "tutorialUrl": "https://www.okx.com/zh-hans/campaigns/xstocks-spot-trading-competition",
+    "officialUrl": "https://www.okx.com/zh-hans/help/okx-unified-tokenized-stock-spot-trading-competition-trade-to-share-700-xspy",
+    "sourceNote": "规则来源：OKX 官方公告《欧易 x 代币化股票现货交易赛：交易瓜分 700 XSPY 奖励》；发布于 2026-07-16。",
+    "updatedAt": "2026-07-21"
+  },
+  {
+    "id": "binance-wallet-usdd-s7-800k-202607",
+    "platform": "Binance",
+    "module": "finance",
+    "title": "USDD 第七季：通过币安钱包理财存入 USDT 享 80 万 USDD Boost APR 奖励",
+    "productType": "Binance Wallet DeFi Strategy",
+    "status": "进行中",
+    "stablecoin": "USDT / USDD（sUSDD）",
+    "apr": "800,000 USDD Boost APR 奖励",
+    "startAt": "2026-07-19 08:00",
+    "endAt": "2026-09-07 07:59",
+    "timezone": "UTC+8 北京",
+    "minAmount": "通过 Binance Wallet DeFi USDT-sUSDD Strategy 存入至少 100 USDT",
+    "activityAmount": "800,000 USDD Boost APR 奖励池，为期 50 天。",
+    "rewardRule": [
+      "活动时间为 2026-07-19 08:00 至 2026-09-07 07:59（UTC+8），共约 50 天。",
+      "USDD 第七季为币安钱包与去中心化稳定币 USDD 合作的 Strategy Boost APR 活动。",
+      "用户需通过 Binance Wallet DeFi 板块 USDT-sUSDD Strategy 存入至少 100 USDT，即可自动参与奖池瓜分。",
+      "本期活动总奖池为 800,000 USDD 等值奖励，以 Boost APR 形式按比例分配。",
+      "当前 USDD 活动用户保持持仓即可自动视为参与本期活动；无需额外操作。",
+      "奖励于活动结束后指定时间内发放至用户钱包地址；具体分配规则以 Binance Wallet 活动页面展示为准。"
+    ],
+    "tutorialUrl": "https://www.binance.com/en/activity/trading-competition/w3e-usdt-usdd-s6",
+    "officialUrl": "https://www.binance.com/zh-CN/square/post/07-17-2026-binance-wallet-announces-usdd-season-7-rewards-event-with-up-to-800-000-in-usdd-boosted-yield-345723638108913",
+    "sourceNote": "规则来源：Binance Wallet 官方 X 账号公告 USDD Season 7；发布于 2026-07-17。",
+    "updatedAt": "2026-07-21"
   }
 ];
