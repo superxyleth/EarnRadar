@@ -1,318 +1,754 @@
-<!doctype html>
-<html lang="zh-CN">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>一文带你入门 OKX Boost</title>
-  <style>
-    * {
-      box-sizing: border-box;
-      -webkit-print-color-adjust: exact;
-    }
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>一文带你入门okx Boost （入门教程+萌新图示指导）</title><style>
 
-    html,
-    body {
-      margin: 0;
-      padding: 0;
-    }
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
 
-    body {
-      color: rgb(55, 53, 47);
-      font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "PingFang SC", "Microsoft YaHei", Arial, sans-serif;
-      font-size: 16px;
-      line-height: 1.5;
-      white-space: pre-wrap;
-      background: #fff;
-    }
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
 
-    @media only screen {
-      body {
-        margin: 2em auto;
-        max-width: 900px;
-      }
-    }
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
 
-    a,
-    a.visited {
-      color: inherit;
-      text-decoration: underline;
-    }
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
 
-    .page {
-      padding: 0 96px;
-    }
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
 
-    .page-title {
-      margin-top: 0;
-      margin-bottom: 0.75em;
-      font-size: 2.5rem;
-      line-height: 1.2;
-      font-weight: 700;
-      letter-spacing: -0.01em;
-    }
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
 
-    .page-description {
-      margin: 0;
-      min-height: 1rem;
-    }
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
 
-    h1,
-    h2,
-    h3 {
-      margin-bottom: 0;
-      line-height: 1.2;
-      font-weight: 600;
-      letter-spacing: -0.01em;
-    }
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
 
-    h2 {
-      margin-top: 1.5rem;
-      font-size: 1.5rem;
-    }
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
 
-    h3 {
-      margin-top: 1.25rem;
-      font-size: 1.25rem;
-    }
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
 
-    p {
-      margin: 0.5em 0;
-      min-height: 1.5em;
-    }
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
 
-    ol,
-    ul {
-      margin: 0;
-      margin-block-start: 0.6em;
-      margin-block-end: 0.6em;
-      padding-inline-start: 1.7em;
-    }
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
 
-    li {
-      padding-left: 0.1em;
-      margin: 0.25em 0;
-    }
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+}
 
-    ul > li {
-      list-style: disc;
-    }
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
 
-    li ul > li {
-      list-style: circle;
-    }
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
 
-    figure {
-      margin: 1.25em 0;
-      page-break-inside: avoid;
-    }
+mark {
+	background-color: transparent;
+}
 
-    img {
-      display: block;
-      max-width: 100%;
-      border-radius: 1px;
-    }
+.indented {
+	padding-left: 1.5em;
+}
 
-    figcaption {
-      margin-top: 0.5em;
-      opacity: 0.5;
-      font-size: 85%;
-    }
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
 
-    mark {
-      background-color: transparent;
-    }
+img {
+	max-width: 100%;
+}
 
-    .highlight-teal {
-      color: rgba(80, 148, 110, 1);
-      fill: rgba(80, 148, 110, 1);
-    }
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
 
-    .highlight-gray {
-      color: rgba(125, 122, 117, 1);
-      fill: rgba(125, 122, 117, 1);
-    }
+	table.collection-content {
+		width: 100%;
+		table-layout: fixed;
+	}
 
-    .highlight-yellow_background {
-      background: rgba(249, 243, 220, 1);
-    }
+	table.collection-content th,
+	table.collection-content td {
+		overflow-wrap: anywhere;
+	}
 
-    .table_of_contents-item {
-      display: block;
-      padding: 0.125rem;
-      font-size: 0.875rem;
-      line-height: 1.3;
-    }
+	table.collection-content td > .user,
+	table.collection-content td > time {
+		white-space: pre-wrap;
+	}
+}
 
-    .table_of_contents-link {
-      opacity: 0.7;
-      border-bottom: 1px solid rgba(55, 53, 47, 0.18);
-      text-decoration: none;
-    }
+@page {
+	margin: 1in;
+}
 
-    .source-note {
-      margin-top: 2em;
-      padding-top: 1em;
-      border-top: 1px solid rgba(55, 53, 47, 0.09);
-      color: rgba(55, 53, 47, 0.6);
-      font-size: 0.875rem;
-    }
+.collection-content-wrapper {
+	overflow-x: auto;
+}
 
-    @media (max-width: 760px) {
-      body {
-        margin: 1.2em auto;
-      }
+@media only print {
+	.collection-content-wrapper {
+		overflow-x: visible;
+	}
+}
 
-      .page {
-        padding: 0 24px;
-      }
+.collection-content {
+	font-size: 0.875rem;
+}
 
-      .page-title {
-        font-size: 2rem;
-      }
-    }
-  </style>
-</head>
-<body>
-  <article class="page sans">
-    <header>
-      <h1 class="page-title" dir="auto">一文带你入门 OKX Boost</h1>
-      <p class="page-description" dir="auto"></p>
-    </header>
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
 
-    <div class="page-body">
-      <p>这一篇按 Alpha 教程的写法整理，主要讲 OKX Boost 现在能做什么、交易量怎么刷、X Launch / Stake / X Campaign 分别要注意什么。</p>
+.column-list {
+	display: flex;
+	gap: 46px;
+}
 
-      <nav aria-label="目录">
-        <a class="table_of_contents-item table_of_contents-link" href="#part-1">1. Boost 有哪些板块</a>
-        <a class="table_of_contents-item table_of_contents-link" href="#part-2">2. Boost 交易量怎么计算</a>
-        <a class="table_of_contents-item table_of_contents-link" href="#part-3">3. 交易磨损和邀请码</a>
-        <a class="table_of_contents-item table_of_contents-link" href="#part-4">4. X Launch 空投代币领取</a>
-        <a class="table_of_contents-item table_of_contents-link" href="#part-5">5. X Launch Stake 项目</a>
-        <a class="table_of_contents-item table_of_contents-link" href="#part-6">6. X Campaign 项目</a>
-      </nav>
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
 
-      <h2 id="part-1">1. OKX Boost 目前主要可以分成三个板块</h2>
-      <ul>
-        <li>X Launch
-          <ul>
-            <li>根据钱包最近 10 天的 Boost 交易量日均、Boost 余额均值来判断资格。</li>
-            <li>满足条件后，可以领取新项目的空投代币。</li>
-          </ul>
-        </li>
-        <li>X Launch Stake
-          <ul>
-            <li>这个在页面里也放在 X Launch 里面，但实际可以单独理解为质押项目。</li>
-            <li>Boost 交易量越高，质押收益的加成倍数可能越高。</li>
-          </ul>
-        </li>
-        <li>X Campaign
-          <ul>
-            <li>这是交易竞赛板块。</li>
-            <li>项目方一般会拿出稳定币或项目代币做奖励，按活动规则发给符合条件的钱包。</li>
-          </ul>
-        </li>
-      </ul>
+.column > *:first-child {
+	margin-top: 0;
+}
 
-      <figure>
-        <a href="image-1.png"><img style="width:704px" src="image-1.png" alt="OKX Boost 板块入口"></a>
-      </figure>
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
 
-      <h2 id="part-2">2. <mark class="highlight-teal"><strong><span style="border-bottom:0.05em solid">Boost 交易量是最重要的部分，也是主要磨损来源</span></strong></mark></h2>
-      <ul>
-        <li>你在 OKX 钱包里交易指定代币，会获得 Boost 交易量。</li>
-        <li>Boost 交易量会影响 X Launch 空投资格，也会影响部分 Stake 项目的加成倍数。</li>
-        <li>不同代币可能有不同加成，活动页会显示这笔交易预计可以获得多少 Boost 交易量。</li>
-      </ul>
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
 
-      <figure>
-        <a href="image-2.png"><img style="width:704px" src="image-2.png" alt="Boost 交易量规则入口"></a>
-      </figure>
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
 
-      <ul>
-        <li>常见刷法是交易 X Layer 链上的两种 Layer 1 代币。</li>
-        <li>Layer 1 代币一般可以理解为稳定币、主流币等流动性相对更好的资产。</li>
-        <li>如果活动页显示 50% 加成，买入和卖出都会按规则计入 Boost 交易量。</li>
-        <li>有时候 Boost 榜单里的项目代币也会带 50% 加成，但这类币要额外注意滑点、波动和流动性。</li>
-      </ul>
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
 
-      <figure>
-        <a href="image-3.png"><img style="width:704px" src="image-3.png" alt="Boost 交易量明细"></a>
-      </figure>
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
 
-      <h2 id="part-3">3. 交易手续费磨损怎么降低</h2>
-      <ul>
-        <li>Boost 的主要成本不是报名费，而是刷交易量时产生的手续费、滑点和价格波动。</li>
-        <li>钱包里可以填写邀请码，填写后交易手续费可以享受返佣折扣。</li>
-        <li><mark class="highlight-teal"><strong><span style="border-bottom:0.05em solid">教程作者的邀请码是：superxyl</span></strong></mark></li>
-        <li>按原文说明，填写后手续费大约可以省 20%，也就是降低一部分长期刷量磨损。</li>
-      </ul>
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
 
-      <figure>
-        <a href="image-4.png"><img style="width:704px" src="image-4.png" alt="OKX 钱包邀请码填写位置"></a>
-      </figure>
+table {
+	border-collapse: collapse;
+	border-left: none;
+	border-right: none;
+}
 
-      <h2 id="part-4">4. X Launch 空投代币领取</h2>
-      <ul>
-        <li>按原教程发布时的规则，参与 X Launch 空投通常要看两个条件。</li>
-        <li>最近 10 天 Boost 交易量日均达到 600，也就是 10 天合计 6000。</li>
-        <li>Boost 余额达到 200。余额按小时快照，所以最好不要刚好卡 200，可以多留一点防止规则或快照波动。</li>
-      </ul>
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
 
-      <ul>
-        <li>一种比较省事的方式，是钱包里长期保留几百 U 的余额。</li>
-        <li>大部分空投会提前预告，你可以在预告后集中把需要的交易量刷出来，然后等待 10 天周期。</li>
-        <li>也有一些小额空投可能不预告，所以是否长期保持交易量，要看你自己的参与频率和成本。</li>
-      </ul>
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
 
-      <ul>
-        <li>X Launch 空投一般会分成两部分。</li>
-        <li>一半平均分配，一半按交易量分配。</li>
-        <li>如果只是为了性价比，通常达到基础门槛就可以；继续堆交易量不一定比磨损更划算。</li>
-        <li>如果你本身就有交易需求，那顺带做 Boost 会更合理。</li>
-      </ul>
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
 
-      <figure>
-        <a href="image-5.png"><img style="width:704px" src="image-5.png" alt="X Launch 空投领取记录示例"></a>
-      </figure>
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
 
-      <h2 id="part-5">5. X Launch Stake 项目</h2>
-      <ul>
-        <li>Stake 项目的门槛一般比 X Launch 空投低。</li>
-        <li>按原教程发布时的规则，常见要求是 Boost 余额不低于 100，Boost 交易量达到 10。</li>
-        <li>如果最近没有交易，可以当天补一下交易量和余额，第二天再去报名。</li>
-        <li>项目周期通常在一个月左右。</li>
-      </ul>
+ul > li {
+	list-style: disc;
+}
 
-      <ul>
-        <li>Stake 的收益会受 Boost 交易量影响。</li>
-        <li>例如日均 Boost 交易量大概 600 的情况下，示例里加成是 1.4 倍。</li>
-        <li>最高加成可能到 2 倍左右，实际以活动页显示为准。</li>
-      </ul>
+ul.to-do-list {
+	padding-inline-start: 0;
+}
 
-      <ul>
-        <li>这类项目有时质押额度比较高，比如 10 万 U、1000 OKB 等。</li>
-        <li>所以它更适合本身有资金配置需求、并且熟悉 OKX 钱包操作的人。</li>
-        <li>参与前仍然要看清楚智能合约、币价、流动性、赎回周期和平台规则风险。</li>
-      </ul>
+ul.to-do-list > li {
+	list-style: none;
+}
 
-      <figure>
-        <a href="image-6.png"><img style="width:704px" src="image-6.png" alt="X Launch Stake 收益示例"></a>
-      </figure>
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
 
-      <h2 id="part-6">6. X Campaign 项目</h2>
-      <ul>
-        <li>X Campaign 可以理解为链上交易竞赛。</li>
-        <li>这类活动的获奖名额通常比较多，常见是四五千名左右。</li>
-        <li>是否赚钱主要看奖励价值、手续费、滑点、币价波动和你能不能进榜。</li>
-        <li>参与前先算成本，不要只看奖励池。</li>
-      </ul>
+ul.toggle > li {
+	list-style: none;
+}
 
-      <figure>
-        <a href="image-7.png"><img style="width:704px" src="image-7.png" alt="X Campaign 活动参与示例"></a>
-      </figure>
+ul {
+	padding-inline-start: 1.7em;
+}
 
-      <p class="source-note">内容整理自教程作者的 <a href="https://navy-efraasia-2c6.notion.site/okx-Boost-3a37eb8ce13280f3a3c2f58bb61c2ff0" target="_blank" rel="noopener noreferrer">Notion 原文</a>。活动规则会变化，实际参与前以 OKX 钱包活动页为准。</p>
-    </div>
-  </article>
-</body>
-</html>
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol.numbered-list.numbered-list-digits-2 {
+	padding-inline-start: 2em;
+}
+
+ol.numbered-list.numbered-list-digits-3plus {
+	padding-inline-start: 2.4em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+
+
+@media only screen and (max-width: 760px) {
+	body { margin: 1.25em auto; max-width: calc(100% - 32px); }
+	.page-title { font-size: 2rem; }
+}
+figure.image a { display: block; }
+figure.image img { width: 704px; max-width: 100%; height: auto; }
+.source-note { margin-top: 2em; opacity: .55; font-size: .875rem; }
+
+</style></head><body><article class="page sans"><header><h1 class="page-title" dir="auto">一文带你入门okx Boost （入门教程+萌新图示指导）</h1><p class="page-description" dir="auto"></p></header><div class="page-body"><div style="display:contents" dir="auto"><h2 class="">1. 首先Boost 主要有两大板块（其实在我理解有三个板块，后面会详细说每个板块的内容）</h2></div><div style="display:contents" dir="auto"><ul class="bulleted-list"><li style="list-style-type:disc">X launch板块 （简单来说就是你在钱包最近十天Boost 交易量平均值和持仓均值在一定条件下可以领取新币空投）</li></ul></div><div style="display:contents" dir="auto"><ul class="bulleted-list"><li style="list-style-type:disc">X launch stake活动 （这个就是质押理财，理财利率高，其中我们的Boost 交易量高可以提高我们的质押利率倍数），虽然这个是在X launch 模块，不过我觉得这个可以是单独的Stake板块。</li></ul></div><div style="display:contents" dir="auto"><ul class="bulleted-list"><li style="list-style-type:disc">X Campaign 板块（链上交易竞赛板块，项目方会提供一定奖励，如稳定币 or 项目代币等）。</li></ul></div><div style="display:contents" dir="ltr"><figure class="image"><a href="image-1.png"><img src="image-1.png"/></a></figure></div><div style="display:contents" dir="auto"><h2 class=""><mark class="highlight-teal"><strong><span style="border-bottom:0.05em solid">2. Boost X launch的核心，也是我们的主要磨损，Boost 交易量。</span></strong></mark></h2></div><div style="display:contents" dir="auto"><ul class="bulleted-list"><li style="list-style-type:disc">Boost交易量简单来说就是你交易代币会获得交易量，但是针对交易不同币种有不同的交易量加成。</li><li style="list-style-type:disc">当前的主流交易，主要是刷X Layer 链上的两种 Layer1 代币互刷有50%的Boost交易量加成，Layer1代币一般就是稳定币主流币这种。有些时候是刷Boost 榜单有50%加成的代币项目。</li><li style="list-style-type:disc">大家在交易的时候可以看到自己本次交易的Boost 交易量，Boost 交易买卖都会计算。</li><li style="list-style-type:disc">具体细则如下图所述位置。</li></ul></div><div style="display:contents" dir="ltr"><figure class="image"><a href="image-2.png"><img src="image-2.png"/></a></figure></div><div style="display:contents" dir="ltr"><figure class="image"><a href="image-3.png"><img src="image-3.png"/></a></figure></div><div style="display:contents" dir="auto"><ul class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-teal"><strong><span style="border-bottom:0.05em solid">g. 对于Boost交易量有一个可以减少20%的磨损方法，就是填写邀请码，能够使得我们的交易手续费打八折，对于用户来说最高优惠就是八折，所在位置就是图示位置，我的八折邀请码是：superxyl</span></strong></mark></li></ul></div><div style="display:contents" dir="ltr"><figure class="image"><a href="image-4.png"><img src="image-4.png"/></a></figure></div><div style="display:contents" dir="auto"><h2 class="">3. X launch 空投代币领取要求。</h2></div><div style="display:contents" dir="auto"><ul class="bulleted-list"><li style="list-style-type:disc">针对目前这个阶段，需要十天Boost 交易量平均600，也就是十天总共要有 Boost 6000 交易量，Boost 余额 200，注意这个余额是按照小时快照的，大家这个可以在钱包里放个三四百u就可以了，这个规则偶尔会小变，放多一点点会更好。</li><li style="list-style-type:disc">然后这个的打法就是，钱包余额一直放个几百u，毕竟这个是靠时间堆的，或者是你短时间要放更多的钱，然后Boost交易量的话，大部分的时候空投都有预告，我们在预告的时候这一天刷够6000就可以了，然后后面十天就不用在交易了，比较省事。然后后面偶尔会不出预告直接发，这种一般都是小毛，看是不是再你十天周期里，或者你有在做别的交易。</li><li style="list-style-type:disc">X launch 空投是两部分，一半是平均分，一半是按照交易量平均分，这个交易量平均分一般不会有超额收益，除非是某个大毛才会赚，基本门槛收益是最好的，或者说有部分人就是在交易，能凑着混点空投。</li><li style="list-style-type:disc">我举个我领取空投的图示，前两个是我交易量多一些，瓜分空投多一些的情况，后面三个是保底，总的差距并不大，像后面平均的基本都算是平均分的。</li></ul></div><div style="display:contents" dir="ltr"><figure class="image"><a href="image-5.png"><img src="image-5.png"/></a></figure></div><div style="display:contents" dir="auto"><h2 class="">4. X launch Stake 项目。</h2></div><div style="display:contents" dir="auto"><ul class="bulleted-list"><li style="list-style-type:disc">Stake 质押项目的门槛比较低，一般就是Boost 余额≥ 100,Boost 交易量有10就行，如果你最近没交易不能报名没关系，你今天交易量Boost余额到100 就可以了，第二天就可以报名了，Stake 质押项目一般是一个月的时间。</li><li style="list-style-type:disc">然后Stake 项目有那个加成倍数，加成倍数由Boost 交易量决定，基本上大家Boost交易平均600，就是1.4倍的加成，最高两倍，差距不是很大。</li><li style="list-style-type:disc">然后就是质押的额度，质押额度很高 10wU ，1000OKB等等，但是大部分用户都玩不太懂钱包，以及钱包不放那么多钱，用习惯钱包的会很赚，几十万u能有年化10%+，很舒服了。</li><li style="list-style-type:disc">以下我举个我做过的收益例子。</li></ul></div><div style="display:contents" dir="ltr"><figure class="image"><a href="image-6.png"><img src="image-6.png"/></a></figure></div><div style="display:contents" dir="auto"><h2 class="">5. X Campaign 项目</h2></div><div style="display:contents" dir="auto"><ul class="bulleted-list"><li style="list-style-type:disc">这个就是交易竞赛，名额很多一般有四五千，大部分的时候都能小赚一些。</li><li style="list-style-type:disc">举个我以前参加过的图示。</li></ul></div><div style="display:contents" dir="ltr"><figure class="image"><a href="image-7.png"><img src="image-7.png"/></a></figure></div><div style="display:contents" dir="auto"><p class="source-note"><a href="https://navy-efraasia-2c6.notion.site/okx-Boost-3a37eb8ce13280f3a3c2f58bb61c2ff0" target="_blank" rel="noopener noreferrer">Notion source</a></p></div></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
