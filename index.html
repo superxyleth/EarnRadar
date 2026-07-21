@@ -251,19 +251,10 @@
         },
         "okx-boost": {
           title: "OKX Boost 教程",
-          meta: "OKX Boost 参与方式、操作流程与注意事项",
+          meta: "Boost 交易量、X Launch、Stake 与 X Campaign 入门图文教程",
           hero: "./assets/logo-compass.svg",
-          externalUrl: "https://navy-efraasia-2c6.notion.site/okx-Boost-3a37eb8ce13280f3a3c2f58bb61c2ff0",
-          externalLabel: "打开 OKX Boost 完整教程",
-          sections: [
-            {
-              title: "完整图文教程",
-              items: [
-                "教程原文已整理在 Notion，点击下方按钮即可查看完整内容。",
-                "参与具体活动前，请再次核对 OKX 官方页面展示的时间、资格、奖励规则和地区限制。",
-              ],
-            },
-          ],
+          documentUrl: "./assets/tutorials/okx-boost-notion/index.html",
+          sections: [],
           images: [],
         },
       };
@@ -382,13 +373,7 @@
                           </section>
                         `,
                       )
-                      .join("")}
-                    ${
-                      tutorial.externalUrl
-                        ? `<a class="button primary tutorial-open-link" href="${escapeHtml(tutorial.externalUrl)}" target="_blank" rel="noreferrer">${escapeHtml(tutorial.externalLabel || "打开完整教程")}</a>`
-                        : ""
-                    }
-                    ${
+                      .join("")}                    ${
                       tutorial.images.length
                         ? `<section class="tutorial-section">
                             <h4>图示参考</h4>

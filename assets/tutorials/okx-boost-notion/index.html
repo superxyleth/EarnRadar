@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>一文带你入门 OKX Boost｜EarnRadar</title>
+  <style>
+    :root {
+      --bg: #07100d;
+      --panel: #0d1915;
+      --panel-2: #12231d;
+      --text: #edf8f2;
+      --muted: #a7bdb2;
+      --line: rgba(198, 255, 225, .14);
+      --accent: #62f3ae;
+      --accent-2: #8dffd0;
+      --warning: #f4cb69;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 85% 0%, rgba(68, 209, 145, .13), transparent 28rem),
+        linear-gradient(180deg, #08130f 0%, var(--bg) 100%);
+      font-family: Inter, "PingFang SC", "Microsoft YaHei", system-ui, sans-serif;
+      font-size: 16px;
+      line-height: 1.85;
+    }
+
+    a { color: var(--accent-2); }
+    .page { width: min(920px, calc(100% - 32px)); margin: 0 auto; padding: 54px 0 72px; }
+    .eyebrow { margin: 0 0 10px; color: var(--accent); font-size: 13px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; }
+    h1 { margin: 0; font-size: clamp(31px, 6vw, 54px); line-height: 1.18; letter-spacing: -.035em; }
+    .lead { max-width: 740px; margin: 20px 0 0; color: var(--muted); font-size: 18px; }
+    .notice { margin: 28px 0 0; padding: 16px 18px; border: 1px solid rgba(244, 203, 105, .28); border-radius: 14px; color: #f7e3ae; background: rgba(244, 203, 105, .07); }
+    .toc { display: flex; flex-wrap: wrap; gap: 10px; margin: 30px 0 42px; }
+    .toc a { padding: 8px 13px; border: 1px solid var(--line); border-radius: 999px; color: var(--muted); background: rgba(255,255,255,.025); text-decoration: none; }
+    .toc a:hover { color: var(--text); border-color: rgba(98, 243, 174, .42); }
+    section { margin: 28px 0; padding: clamp(22px, 4vw, 36px); border: 1px solid var(--line); border-radius: 22px; background: linear-gradient(145deg, rgba(18,35,29,.94), rgba(10,22,17,.94)); box-shadow: 0 22px 70px rgba(0,0,0,.18); }
+    h2 { margin: 0 0 16px; font-size: clamp(23px, 4vw, 31px); line-height: 1.3; }
+    h3 { margin: 26px 0 8px; color: var(--accent-2); font-size: 19px; }
+    p { margin: 12px 0; }
+    ol, ul { margin: 14px 0; padding-left: 1.45em; }
+    li { margin: 9px 0; }
+    strong { color: #fff; }
+    code { padding: 3px 7px; border-radius: 7px; color: #07100d; background: var(--accent); font-family: inherit; font-weight: 800; }
+    figure { margin: 24px 0 8px; }
+    img { display: block; width: 100%; height: auto; border: 1px solid var(--line); border-radius: 14px; background: #fff; }
+    figcaption { margin-top: 9px; color: var(--muted); font-size: 14px; text-align: center; }
+    footer { padding-top: 24px; color: var(--muted); font-size: 14px; text-align: center; }
+
+    @media (max-width: 600px) {
+      .page { width: min(100% - 20px, 920px); padding-top: 34px; }
+      section { border-radius: 17px; }
+      .lead { font-size: 16px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header>
+      <p class="eyebrow">EarnRadar · OKX Boost 教程</p>
+      <h1>一文带你入门 OKX Boost</h1>
+      <p class="lead">从 Boost 交易量开始，快速了解 X Launch 空投、Stake 质押与 X Campaign 交易竞赛。</p>
+      <p class="notice"><strong>提示：</strong>活动门槛、快照、奖励和地区限制可能调整。参与前请以 OKX 钱包活动页面显示的最新规则为准，并注意链上交易与资产风险。</p>
+    </header>
+
+    <nav class="toc" aria-label="文章目录">
+      <a href="#overview">板块概览</a>
+      <a href="#volume">Boost 交易量</a>
+      <a href="#launch">X Launch 空投</a>
+      <a href="#stake">Stake 质押</a>
+      <a href="#campaign">X Campaign</a>
+    </nav>
+
+    <section id="overview">
+      <h2>1. Boost 有哪些板块？</h2>
+      <p>Boost 主要可以理解为三个板块：</p>
+      <ol>
+        <li><strong>X Launch：</strong>根据钱包最近十天的 Boost 交易量平均值和持仓均值，满足条件后领取新币空投。</li>
+        <li><strong>X Launch Stake：</strong>参与质押理财，Boost 交易量越高，质押利率加成倍数可能越高。虽然它位于 X Launch 模块，也可以单独理解为 Stake 板块。</li>
+        <li><strong>X Campaign：</strong>链上交易竞赛，项目方通常会提供稳定币或项目代币等奖励。</li>
+      </ol>
+      <figure>
+        <img src="image-1.png" alt="OKX Boost 页面与板块示意" loading="lazy">
+        <figcaption>OKX Boost 页面与板块示意</figcaption>
+      </figure>
+    </section>
+
+    <section id="volume">
+      <h2>2. Boost 交易量</h2>
+      <p>Boost 交易量是 X Launch 的核心，也是参与过程中的主要磨损来源。交易代币会获得交易量，但不同币种可能有不同的交易量加成。</p>
+      <p>当前常见做法是交易 X Layer 链上的两种 Layer 1 代币，可能获得 50% 的 Boost 交易量加成；Layer 1 代币一般指稳定币、主流币等。有时也会交易 Boost 榜单中带 50% 加成的项目代币。</p>
+      <p>交易时可以看到本次交易对应的 Boost 交易量，买入和卖出都会计算。</p>
+      <figure>
+        <img src="image-2.png" alt="Boost 交易量规则入口" loading="lazy">
+        <figcaption>Boost 交易量的查看位置与规则说明</figcaption>
+      </figure>
+      <figure>
+        <img src="image-3.png" alt="Boost 交易量明细示意" loading="lazy">
+        <figcaption>交易量明细示意</figcaption>
+      </figure>
+      <h3>减少手续费磨损</h3>
+      <p>填写邀请码可以让交易手续费享受八折优惠，从而减少约 20% 的手续费磨损。教程作者的邀请码为：<code>superxyl</code>。</p>
+      <figure>
+        <img src="image-4.png" alt="OKX Boost 邀请码填写位置" loading="lazy">
+        <figcaption>邀请码填写位置</figcaption>
+      </figure>
+    </section>
+
+    <section id="launch">
+      <h2>3. X Launch 空投代币领取</h2>
+      <p>按原教程发布时的阶段，参与条件为：</p>
+      <ul>
+        <li>最近十天 Boost 交易量日均达到 <strong>600</strong>，即十天合计 <strong>6,000</strong>。</li>
+        <li>Boost 余额达到 <strong>200</strong>；余额按小时快照，为应对规则小幅变化，可以适当多留一些余额。</li>
+      </ul>
+      <p>一种较省事的思路是长期在钱包中保留几百 U。多数空投会提前预告，可在预告时集中完成所需交易量，随后等待十天周期；偶尔也有不预告的小额空投，需要结合自己的交易周期判断。</p>
+      <p>X Launch 空投通常分为两部分：一半平均分配，一半按交易量分配。按交易量瓜分通常不一定带来超额收益，因此达到基础门槛往往更具性价比；本身有交易需求的用户则可以顺带参与。</p>
+      <figure>
+        <img src="image-5.png" alt="X Launch 空投领取记录示例" loading="lazy">
+        <figcaption>空投领取示例：前两项交易量较多，后几项接近基础门槛</figcaption>
+      </figure>
+    </section>
+
+    <section id="stake">
+      <h2>4. X Launch Stake 项目</h2>
+      <p>Stake 质押项目门槛相对较低。按原教程发布时的规则，通常要求 Boost 余额不低于 100、Boost 交易量达到 10。如果最近没有交易，可在当天补足交易量和余额，次日再尝试报名。项目周期通常约一个月。</p>
+      <p>Stake 项目带有由 Boost 交易量决定的加成倍数。日均 Boost 交易量约 600 时，示例加成为 1.4 倍，最高约 2 倍，实际以活动页为准。</p>
+      <p>质押额度可能较高，例如 10 万 U、1,000 OKB 等。熟悉钱包且本身有资金配置需求的用户更容易发挥额度优势，但仍需评估智能合约、币价、流动性和平台规则风险。</p>
+      <figure>
+        <img src="image-6.png" alt="X Launch Stake 收益示例" loading="lazy">
+        <figcaption>Stake 项目收益示例</figcaption>
+      </figure>
+    </section>
+
+    <section id="campaign">
+      <h2>5. X Campaign 项目</h2>
+      <p>X Campaign 是交易竞赛板块，获奖名额通常较多，常见规模约为四五千名。是否盈利取决于奖励价值、交易手续费、滑点与币价变化，请先计算成本再参与。</p>
+      <figure>
+        <img src="image-7.png" alt="X Campaign 活动参与示例" loading="lazy">
+        <figcaption>X Campaign 活动参与示例</figcaption>
+      </figure>
+    </section>
+
+    <footer>
+      内容整理自教程作者的 <a href="https://navy-efraasia-2c6.notion.site/okx-Boost-3a37eb8ce13280f3a3c2f58bb61c2ff0" target="_blank" rel="noopener noreferrer">Notion 原文</a>。
+    </footer>
+  </main>
+</body>
+</html>
