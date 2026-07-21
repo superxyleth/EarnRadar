@@ -2400,5 +2400,30 @@ window.financeActivities = [
     "officialUrl": "https://www.binance.com/zh-CN/square/post/07-17-2026-binance-wallet-announces-usdd-season-7-rewards-event-with-up-to-800-000-in-usdd-boosted-yield-345723638108913",
     "sourceNote": "规则来源：Binance Wallet 官方 X 账号公告 USDD Season 7；发布于 2026-07-17。",
     "updatedAt": "2026-07-21"
+  },
+  {
+    "id": "okx-boost-arcium-x-launch-ii-202607",
+    "platform": "OKX",
+    "module": "boost",
+    "title": "OKX Boost：Arcium X Launch II 领取 1,000,000 ARX",
+    "productType": "Boost X Launch",
+    "status": "领取中",
+    "stablecoin": "ARX",
+    "apr": "1,000,000 ARX 奖池",
+    "startAt": "2026-07-17 18:00",
+    "endAt": "2026-08-01 20:00",
+    "timezone": "UTC+8 北京",
+    "minAmount": "最低 Boost 余额 200 美元；最低 Boost 交易量 600 美元",
+    "activityAmount": "总奖励 1,000,000 ARX；基础奖励 500,000 ARX 由参与者平分，加成奖励 500,000 ARX 按 Boost 交易量占比分配。",
+    "rewardRule": [
+      "活动参与期为 2026-07-17 18:00 至 2026-07-18 18:00（UTC+8），当前已进入奖励领取期。",
+      "Boost 数据快照周期为 2026-07-07 至 2026-07-16，活动开始后的交易不计入本期资格。",
+      "奖励领取自 2026-07-18 20:00（UTC+8）开始，需在 14 天内手动领取，超期未领取将失效。",
+      "参与资格、Boost 余额、Boost 交易量、领取 Gas 和最终分配以 OKX Wallet 活动页面为准。"
+    ],
+    "tutorialUrl": "https://web3.okx.com/zh-hans/boost/x-launch/arcium2",
+    "officialUrl": "https://web3.okx.com/zh-hans/boost/x-launch/arcium2",
+    "sourceNote": "规则来源：OKX Wallet Boost X Launch 官方页面/API（navName=arcium2）。",
+    "updatedAt": "2026-07-21"
   }
 ];
